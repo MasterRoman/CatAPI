@@ -12,5 +12,6 @@ import Foundation
 protocol RegistrationDelegateProtocol  {
     func showAlertOfExisting()
     func showApiEnteranceVC()
+    func closeVC()
 }
 

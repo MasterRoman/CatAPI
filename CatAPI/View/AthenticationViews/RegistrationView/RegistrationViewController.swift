@@ -166,13 +166,14 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
             
         ])
         
+         self.createButton.addTarget(self, action: #selector(self.createButtonDidPressed), for: .touchUpInside)
     }
     
     @objc private func cancelButtonDidPressed(){
-        self.dismiss(animated: true, completion: nil)
+        closeVC()
     }
     
-    private func createButtonDidPressed(){
+    @objc private func createButtonDidPressed(){
         presenter.checkUserEnteredLogin(userLogin: self.loginTextField.text!)
     }
     
@@ -211,4 +212,8 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         //create and show enterence by means of API
     }
 
+    func closeVC() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

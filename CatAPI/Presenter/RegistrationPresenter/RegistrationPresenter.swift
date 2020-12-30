@@ -27,6 +27,7 @@ class RegistrationPresenter: NSObject {
                 self.registrationDelegate?.showAlertOfExisting()
             } else
             {
+                self.registrationDelegate?.closeVC()
                 self.registrationDelegate?.showApiEnteranceVC()
             }
         }
