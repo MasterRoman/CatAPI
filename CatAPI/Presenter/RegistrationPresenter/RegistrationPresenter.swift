@@ -10,7 +10,7 @@ import Foundation
 
 
 class RegistrationPresenter: NSObject {
-    var registrationDelegate : RegistrationDelegateProtocol?
+    private var registrationDelegate : RegistrationDelegateProtocol?
     private let userManager : UserManager
     override init() {
         userManager = UserManager.init()

@@ -149,6 +149,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
             
         ])
         
+        self.cancelButton.addTarget(self, action: #selector(self.cancelButtonDidPressed), for: .touchUpInside)
         
         self.createButton = UIButton.init(type: .system)
         self.createButton.backgroundColor = UIColor.systemGray5
@@ -167,8 +168,8 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         
     }
     
-    private func cancelButtonDidPressed(){
-       
+    @objc private func cancelButtonDidPressed(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     private func createButtonDidPressed(){
