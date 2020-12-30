@@ -100,7 +100,7 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
     }
     
     func pushRegistrationVC() {
-        var registrationVC : RegistrationViewController = RegistrationViewController.init()
+        let registrationVC : RegistrationViewController = RegistrationViewController.init()
         
         self.present(registrationVC, animated: true, completion: nil)
     }

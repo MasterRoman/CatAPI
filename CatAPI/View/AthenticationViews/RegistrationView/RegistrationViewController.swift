@@ -18,17 +18,27 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     private var passwordTextField : UITextField!
     private var cancelButton : UIButton!
     private var createButton : UIButton!
+    private var positionConstantraint : NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setUpView()
         
         self.presenter =  RegistrationPresenter.init()
         self.presenter.setRegistationViewDelegate(view: self)
-        
+       
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeOnKeyBoardEvent()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unSubscribeOnKeyBoardEvent()
+    }
+    
     func setUpView(){
         let screen = UIScreen.main.bounds
         self.viewBox = UIView.init(frame: CGRect.zero)
@@ -37,17 +47,18 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         self.viewBox.layer.cornerRadius = 5.0
         self.viewBox.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.viewBox)
+        self.positionConstantraint = self.viewBox.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant:-25)
         NSLayoutConstraint.activate([
             self.viewBox.widthAnchor.constraint(equalToConstant: screen.width - 60),
             self.viewBox.heightAnchor.constraint(equalToConstant: screen.height / 2.5),
             self.viewBox.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.viewBox.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: -25),
+            self.positionConstantraint,
         ])
         
 
         self.mainLabel = UILabel.init(frame: CGRect.init(x: 50, y: 50, width: 200, height: 200))
         self.mainLabel.text = "Registration"
-        var font = UIFont.boldSystemFont(ofSize: 32.0)
+        var font = UIFont.boldSystemFont(ofSize: 30.0)
         self.mainLabel.font = font
 
         self.mainLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +73,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
 
         self.secondaryLabel = UILabel.init()
         self.secondaryLabel.text = "Write your data"
-        font = UIFont.systemFont(ofSize: 26.0)
+        font = UIFont.systemFont(ofSize: 22.0)
         self.secondaryLabel.font = font
 
         self.secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +81,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         self.viewBox.addSubview(self.secondaryLabel)
         
         NSLayoutConstraint.activate([
-            self.secondaryLabel.topAnchor.constraint(equalTo: self.mainLabel.bottomAnchor,constant: 12.0),
+            self.secondaryLabel.topAnchor.constraint(equalTo: self.mainLabel.bottomAnchor,constant: 8.0),
             self.secondaryLabel.heightAnchor.constraint(equalToConstant: 30.0),
             self.secondaryLabel.centerXAnchor.constraint(equalTo: self.viewBox.centerXAnchor),
         ])
@@ -83,7 +94,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         self.loginTextField.leftViewMode = .always
         
         self.loginTextField.layer.cornerRadius = 5.0
-        self.loginTextField.backgroundColor = UIColor.gray
+        self.loginTextField.backgroundColor = UIColor.lightGray
         self.loginTextField.textColor = UIColor.white
         
         self.loginTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -154,6 +165,38 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
             
         ])
         
+    }
+    
+    private func cancelButtonDidPressed(){
+        
+    }
+    
+    private func createButtonDidPressed(){
+        
+    }
+    
+    private func subscribeOnKeyBoardEvent(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    private func unSubscribeOnKeyBoardEvent(){
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+      }
+    
+    @objc private func keyBoardWillShow(notification : Notification){
+        
+      //  let rect : CGRect = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        self.positionConstantraint.constant = -100
+        
+    }
+    
+    @objc private func keyBoardWillHide(notification : Notification){
+         self.positionConstantraint.constant = -25
+        
+            //self.viewBox.layoutIfNeeded()
     }
     
     // MARK: Delegate methods
