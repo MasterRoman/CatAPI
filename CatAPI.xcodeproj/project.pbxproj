@@ -24,6 +24,10 @@
 		84AAAD6225546CAD00B67586 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD6125546CAD00B67586 /* NetworkManager.swift */; };
 		84DD112B254DF10C0032E2B4 /* AthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */; };
 		84F1F55D2592503900076197 /* DownloadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1F55C2592503800076197 /* DownloadImageOperation.swift */; };
+		84F3735A259D1A0200BE451D /* APIDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F37359259D1A0200BE451D /* APIDelegateProtocol.swift */; };
+		84F3735D259D1A8B00BE451D /* APIPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3735C259D1A8B00BE451D /* APIPresenter.swift */; };
+		84F37360259D1B7700BE451D /* APIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3735E259D1B7700BE451D /* APIViewController.swift */; };
+		84F37361259D1B7700BE451D /* APIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F3735F259D1B7700BE451D /* APIViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		84AAAD6125546CAD00B67586 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenticationPresenter.swift; sourceTree = "<group>"; };
 		84F1F55C2592503800076197 /* DownloadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageOperation.swift; sourceTree = "<group>"; };
+		84F37359259D1A0200BE451D /* APIDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDelegateProtocol.swift; sourceTree = "<group>"; };
+		84F3735C259D1A8B00BE451D /* APIPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPresenter.swift; sourceTree = "<group>"; };
+		84F3735E259D1B7700BE451D /* APIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewController.swift; sourceTree = "<group>"; };
+		84F3735F259D1B7700BE451D /* APIViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APIViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				842C51F3254979DA00886E42 /* AthenticationViews */,
+				84F37358259D197D00BE451D /* APIViewController */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +162,7 @@
 			children = (
 				84DD1129254DF0D70032E2B4 /* AthenticationPresenter */,
 				84780B1D259A33C900275002 /* RegistrationPresenter */,
+				84F3735B259D1A6200BE451D /* APIPresenter */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -199,6 +209,24 @@
 				84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */,
 			);
 			path = AthenticationPresenter;
+			sourceTree = "<group>";
+		};
+		84F37358259D197D00BE451D /* APIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84F37359259D1A0200BE451D /* APIDelegateProtocol.swift */,
+				84F3735E259D1B7700BE451D /* APIViewController.swift */,
+				84F3735F259D1B7700BE451D /* APIViewController.xib */,
+			);
+			path = APIViewController;
+			sourceTree = "<group>";
+		};
+		84F3735B259D1A6200BE451D /* APIPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				84F3735C259D1A8B00BE451D /* APIPresenter.swift */,
+			);
+			path = APIPresenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +313,7 @@
 				842C51DA254978A100886E42 /* LaunchScreen.storyboard in Resources */,
 				842C51FB25497A9700886E42 /* AthenticationViewController.xib in Resources */,
 				842C51D7254978A100886E42 /* Assets.xcassets in Resources */,
+				84F37361259D1B7700BE451D /* APIViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,12 +334,15 @@
 				84AAAD5E2554401400B67586 /* CatModel.swift in Sources */,
 				842C51CE254978A000886E42 /* AppDelegate.swift in Sources */,
 				84AAAD60255442C100B67586 /* JSONParser.swift in Sources */,
+				84F3735D259D1A8B00BE451D /* APIPresenter.swift in Sources */,
 				84780B1F259A33F300275002 /* RegistrationPresenter.swift in Sources */,
 				84780B24259A425500275002 /* RegistrationViewController.swift in Sources */,
 				84F1F55D2592503900076197 /* DownloadImageOperation.swift in Sources */,
 				842C51F725497A3F00886E42 /* AthenticationDelegateProtocol.swift in Sources */,
 				84780B21259A39A500275002 /* UserManager.swift in Sources */,
 				84780B1C259A31DB00275002 /* RegistrationDelegateProtocol.swift in Sources */,
+				84F3735A259D1A0200BE451D /* APIDelegateProtocol.swift in Sources */,
+				84F37360259D1B7700BE451D /* APIViewController.swift in Sources */,
 				84AAAD6225546CAD00B67586 /* NetworkManager.swift in Sources */,
 				84DD112B254DF10C0032E2B4 /* AthenticationPresenter.swift in Sources */,
 				842C51FA25497A9700886E42 /* AthenticationViewController.swift in Sources */,
