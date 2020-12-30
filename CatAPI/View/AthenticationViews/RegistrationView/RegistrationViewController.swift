@@ -168,11 +168,11 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     }
     
     private func cancelButtonDidPressed(){
-        
+       
     }
     
     private func createButtonDidPressed(){
-        
+        presenter.checkUserEnteredLogin(userLogin: self.loginTextField.text!)
     }
     
     private func subscribeOnKeyBoardEvent(){
@@ -187,16 +187,14 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
       }
     
     @objc private func keyBoardWillShow(notification : Notification){
-        
-      //  let rect : CGRect = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-        self.positionConstantraint.constant = -100
+        let screen : CGRect = UIScreen.main.bounds
+        let rect : CGRect = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        self.positionConstantraint.constant =  rect.size.height - (screen.height)/2.0
         
     }
     
     @objc private func keyBoardWillHide(notification : Notification){
          self.positionConstantraint.constant = -25
-        
-            //self.viewBox.layoutIfNeeded()
     }
     
     // MARK: Delegate methods
