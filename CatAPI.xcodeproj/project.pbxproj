@@ -9,11 +9,21 @@
 /* Begin PBXBuildFile section */
 		842C51CE254978A000886E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51CD254978A000886E42 /* AppDelegate.swift */; };
 		842C51D0254978A000886E42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51CF254978A000886E42 /* SceneDelegate.swift */; };
-		842C51D2254978A000886E42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51D1254978A000886E42 /* ViewController.swift */; };
-		842C51D5254978A000886E42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C51D3254978A000886E42 /* Main.storyboard */; };
 		842C51D7254978A100886E42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842C51D6254978A100886E42 /* Assets.xcassets */; };
 		842C51DA254978A100886E42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842C51D8254978A100886E42 /* LaunchScreen.storyboard */; };
 		842C51E5254978A100886E42 /* CatAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51E4254978A100886E42 /* CatAPITests.swift */; };
+		842C51F725497A3F00886E42 /* AthenticationDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51F625497A3F00886E42 /* AthenticationDelegateProtocol.swift */; };
+		842C51FA25497A9700886E42 /* AthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51F825497A9700886E42 /* AthenticationViewController.swift */; };
+		842C51FB25497A9700886E42 /* AthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C51F925497A9700886E42 /* AthenticationViewController.xib */; };
+		84780B1C259A31DB00275002 /* RegistrationDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B1B259A31DB00275002 /* RegistrationDelegateProtocol.swift */; };
+		84780B1F259A33F300275002 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B1E259A33F300275002 /* RegistrationPresenter.swift */; };
+		84780B21259A39A500275002 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B20259A39A500275002 /* UserManager.swift */; };
+		84780B24259A425500275002 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B22259A425500275002 /* RegistrationViewController.swift */; };
+		84AAAD5E2554401400B67586 /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD5D2554401400B67586 /* CatModel.swift */; };
+		84AAAD60255442C100B67586 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD5F255442C100B67586 /* JSONParser.swift */; };
+		84AAAD6225546CAD00B67586 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD6125546CAD00B67586 /* NetworkManager.swift */; };
+		84DD112B254DF10C0032E2B4 /* AthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */; };
+		84F1F55D2592503900076197 /* DownloadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1F55C2592503800076197 /* DownloadImageOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +40,24 @@
 		842C51CA254978A000886E42 /* CatAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842C51CD254978A000886E42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842C51CF254978A000886E42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		842C51D1254978A000886E42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		842C51D4254978A000886E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		842C51D6254978A100886E42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		842C51D9254978A100886E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842C51DB254978A100886E42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842C51E0254978A100886E42 /* CatAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842C51E4254978A100886E42 /* CatAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPITests.swift; sourceTree = "<group>"; };
 		842C51E6254978A100886E42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842C51F625497A3F00886E42 /* AthenticationDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenticationDelegateProtocol.swift; sourceTree = "<group>"; };
+		842C51F825497A9700886E42 /* AthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenticationViewController.swift; sourceTree = "<group>"; };
+		842C51F925497A9700886E42 /* AthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AthenticationViewController.xib; sourceTree = "<group>"; };
+		84780B1B259A31DB00275002 /* RegistrationDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDelegateProtocol.swift; sourceTree = "<group>"; };
+		84780B1E259A33F300275002 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		84780B20259A39A500275002 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		84780B22259A425500275002 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		84AAAD5D2554401400B67586 /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
+		84AAAD5F255442C100B67586 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		84AAAD6125546CAD00B67586 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenticationPresenter.swift; sourceTree = "<group>"; };
+		84F1F55C2592503800076197 /* DownloadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +101,13 @@
 			children = (
 				842C51CD254978A000886E42 /* AppDelegate.swift */,
 				842C51CF254978A000886E42 /* SceneDelegate.swift */,
-				842C51D1254978A000886E42 /* ViewController.swift */,
-				842C51D3254978A000886E42 /* Main.storyboard */,
 				842C51D6254978A100886E42 /* Assets.xcassets */,
 				842C51D8254978A100886E42 /* LaunchScreen.storyboard */,
 				842C51DB254978A100886E42 /* Info.plist */,
+				842C51EF2549798300886E42 /* Services */,
+				842C51F02549798C00886E42 /* Model */,
+				842C51F22549799B00886E42 /* Presenter */,
+				842C51F12549799300886E42 /* View */,
 			);
 			path = CatAPI;
 			sourceTree = "<group>";
@@ -97,6 +119,86 @@
 				842C51E6254978A100886E42 /* Info.plist */,
 			);
 			path = CatAPITests;
+			sourceTree = "<group>";
+		};
+		842C51EF2549798300886E42 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84AAAD5F255442C100B67586 /* JSONParser.swift */,
+				84AAAD6125546CAD00B67586 /* NetworkManager.swift */,
+				84F1F55C2592503800076197 /* DownloadImageOperation.swift */,
+				84780B20259A39A500275002 /* UserManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		842C51F02549798C00886E42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84AAAD5D2554401400B67586 /* CatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842C51F12549799300886E42 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842C51F3254979DA00886E42 /* AthenticationViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842C51F22549799B00886E42 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				84DD1129254DF0D70032E2B4 /* AthenticationPresenter */,
+				84780B1D259A33C900275002 /* RegistrationPresenter */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		842C51F3254979DA00886E42 /* AthenticationViews */ = {
+			isa = PBXGroup;
+			children = (
+				842C51F4254979F700886E42 /* AthenticationView */,
+				842C51F525497A0700886E42 /* RegistrationView */,
+			);
+			path = AthenticationViews;
+			sourceTree = "<group>";
+		};
+		842C51F4254979F700886E42 /* AthenticationView */ = {
+			isa = PBXGroup;
+			children = (
+				842C51F625497A3F00886E42 /* AthenticationDelegateProtocol.swift */,
+				842C51F825497A9700886E42 /* AthenticationViewController.swift */,
+				842C51F925497A9700886E42 /* AthenticationViewController.xib */,
+			);
+			path = AthenticationView;
+			sourceTree = "<group>";
+		};
+		842C51F525497A0700886E42 /* RegistrationView */ = {
+			isa = PBXGroup;
+			children = (
+				84780B1B259A31DB00275002 /* RegistrationDelegateProtocol.swift */,
+				84780B22259A425500275002 /* RegistrationViewController.swift */,
+			);
+			path = RegistrationView;
+			sourceTree = "<group>";
+		};
+		84780B1D259A33C900275002 /* RegistrationPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				84780B1E259A33F300275002 /* RegistrationPresenter.swift */,
+			);
+			path = RegistrationPresenter;
+			sourceTree = "<group>";
+		};
+		84DD1129254DF0D70032E2B4 /* AthenticationPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */,
+			);
+			path = AthenticationPresenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,8 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				842C51DA254978A100886E42 /* LaunchScreen.storyboard in Resources */,
+				842C51FB25497A9700886E42 /* AthenticationViewController.xib in Resources */,
 				842C51D7254978A100886E42 /* Assets.xcassets in Resources */,
-				842C51D5254978A000886E42 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +302,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				842C51D2254978A000886E42 /* ViewController.swift in Sources */,
+				84AAAD5E2554401400B67586 /* CatModel.swift in Sources */,
 				842C51CE254978A000886E42 /* AppDelegate.swift in Sources */,
+				84AAAD60255442C100B67586 /* JSONParser.swift in Sources */,
+				84780B1F259A33F300275002 /* RegistrationPresenter.swift in Sources */,
+				84780B24259A425500275002 /* RegistrationViewController.swift in Sources */,
+				84F1F55D2592503900076197 /* DownloadImageOperation.swift in Sources */,
+				842C51F725497A3F00886E42 /* AthenticationDelegateProtocol.swift in Sources */,
+				84780B21259A39A500275002 /* UserManager.swift in Sources */,
+				84780B1C259A31DB00275002 /* RegistrationDelegateProtocol.swift in Sources */,
+				84AAAD6225546CAD00B67586 /* NetworkManager.swift in Sources */,
+				84DD112B254DF10C0032E2B4 /* AthenticationPresenter.swift in Sources */,
+				842C51FA25497A9700886E42 /* AthenticationViewController.swift in Sources */,
 				842C51D0254978A000886E42 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,14 +337,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		842C51D3254978A000886E42 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				842C51D4254978A000886E42 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		842C51D8254978A100886E42 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
