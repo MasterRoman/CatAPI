@@ -152,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				842C51F3254979DA00886E42 /* AthenticationViews */,
-				84F37358259D197D00BE451D /* APIViewController */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +171,7 @@
 			children = (
 				842C51F4254979F700886E42 /* AthenticationView */,
 				842C51F525497A0700886E42 /* RegistrationView */,
+				84F37358259D197D00BE451D /* APIViewController */,
 			);
 			path = AthenticationViews;
 			sourceTree = "<group>";

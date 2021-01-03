@@ -16,6 +16,7 @@ class APIViewController: UIViewController,APIDelegateProtocol {
         super.viewDidLoad()
         
         self.presenter = APIPresenter.init()
+        self.presenter.setAPIViewDelegate(view: self)
     }
     
      // MARK: Delegate methods
