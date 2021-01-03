@@ -19,4 +19,14 @@ class UserManager: NSObject {
         
         return false 
     }
+    
+    func checkUserRegistration(login : String,password : String) ->Bool{
+       
+        return false
+    }
+    
+    func registerUser(login : String,password : String,apiKey : String,isActive : Bool){
+        
+    }
+    
 }
