@@ -16,17 +16,44 @@ class UserManager: NSObject {
     }
     
     func checkUserLogin(login : String)->Bool{
-        
-        return false 
+        if ((UserDefaults.standard.object(forKey: "Users")) != nil){
+            let users : Array<Dictionary> = UserDefaults.standard.object(forKey: "Users") as! Array<Dictionary<String, Any>>
+            for user in users{
+                let localLogin : String = user["Login"] as! String
+                if (localLogin == login){
+                    return true
+                }
+            }
+        }
+        return false
     }
     
     func checkUserRegistration(login : String,password : String) ->Bool{
-       
+        if ((UserDefaults.standard.object(forKey: "Users")) != nil){
+            let users : Array<Dictionary> = UserDefaults.standard.object(forKey: "Users") as! Array<Dictionary<String, Any>>
+            for user in users {
+                
+                
+            }
+        }
         return false
     }
     
     func registerUser(login : String,password : String,apiKey : String,isActive : Bool){
+        if ((UserDefaults.standard.object(forKey: "Users")) != nil){
+            var users : Array = UserDefaults.standard.object(forKey: "Users") as! Array<Any>
+            let user = ["Login": login, "Password":password, "ApiKey":apiKey, "IsActive": isActive] as [String : Any]
+            users.append(user)
+            UserDefaults.standard.set(users, forKey: "Users")
+        }
+        else {
+            let user = ["Login": login, "Password":password, "ApiKey":apiKey, "IsActive": isActive] as [String : Any]
+            let users = Array(arrayLiteral: user)
+            UserDefaults.standard.set(users, forKey: "Users")
+            
+        }
         
     }
     
 }
+
