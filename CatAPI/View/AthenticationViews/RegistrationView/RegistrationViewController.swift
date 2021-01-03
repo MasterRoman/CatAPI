@@ -42,7 +42,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     func setUpView(){
         let screen = UIScreen.main.bounds
         self.viewBox = UIView.init(frame: CGRect.zero)
-        self.viewBox.backgroundColor = UIColor.white
+        self.viewBox.backgroundColor = UIColor.systemGroupedBackground
         self.viewBox.isOpaque = true
         self.viewBox.layer.cornerRadius = 5.0
         self.viewBox.translatesAutoresizingMaskIntoConstraints = false
@@ -209,7 +209,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     }
     
     func showApiEnteranceVC() {
-        let apiVC : APIViewController =  APIViewController.init(nibName: "APIViewController", bundle: nil)
+        let apiVC : APIViewController =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self.loginTextField.text!,password: self.passwordTextField.text!)
      
         self.present(apiVC, animated: true, completion: nil)
         
