@@ -39,16 +39,16 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
     
    // MARK: actions
     
-    @IBAction func loginButtonDidPressed(_ sender: UIButton) {
+    @IBAction func loginButtonDidPress(_ sender: UIButton) {
         self.presenter.checkUser(login: self.loginTextField.text!, password: self.passwordTextField.text!)
     }
     
-    @IBAction func showCatsButtonDidPressed(_ sender: UIButton) {
+    @IBAction func showCatsButtonDidPress(_ sender: UIButton) {
         self.presenter.showMainVCWithoutRegistration()
     }
     
     
-    @IBAction func registerButtonDidPressed(_ sender: UIButton) {
+    @IBAction func registerButtonDidPress(_ sender: UIButton) {
         self.presenter.showRegistrationViewController()
     }
     

@@ -149,7 +149,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
             
         ])
         
-        self.cancelButton.addTarget(self, action: #selector(self.cancelButtonDidPressed), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.cancelButtonDidPress), for: .touchUpInside)
         
         self.createButton = UIButton.init(type: .system)
         self.createButton.backgroundColor = UIColor.systemGray5
@@ -166,14 +166,14 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
             
         ])
         
-         self.createButton.addTarget(self, action: #selector(self.createButtonDidPressed), for: .touchUpInside)
+         self.createButton.addTarget(self, action: #selector(self.createButtonDidPress), for: .touchUpInside)
     }
     
-    @objc private func cancelButtonDidPressed(){
+    @objc private func cancelButtonDidPress(){
         closeVC()
     }
     
-    @objc private func createButtonDidPressed(){
+    @objc private func createButtonDidPress(){
         presenter.checkUserEnteredLogin(userLogin: self.loginTextField.text!)
     }
     

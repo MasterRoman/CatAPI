@@ -19,14 +19,21 @@ class APIViewController: UIViewController,APIDelegateProtocol {
         self.presenter.setAPIViewDelegate(view: self)
     }
     
-     // MARK: Delegate methods
+    @IBAction func textFieldDidEdit(_ sender: UITextField) {
+    }
+    @IBAction func confirmButtonDidPress(_ sender: UIButton) {
+    }
+    @IBAction func getButtonDidPress(_ sender: UIButton) {
+        self.presenter.showApiWebPages()
+    }
+    // MARK: Delegate methods
     
     func pushMainVC() {
         //
     }
     
     func showAPIWebPage() {
-        //
+        UIApplication.shared.open(URL.init(fileURLWithPath: "https://thecatapi.com/signup"), options:[:], completionHandler: nil)
     }
     
     

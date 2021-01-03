@@ -39,7 +39,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="Register!"/>
                                     <connections>
-                                        <action selector="registerButtonDidPressed:" destination="-1" eventType="touchUpInside" id="tHO-6k-kUH"/>
+                                        <action selector="registerButtonDidPress:" destination="-1" eventType="touchUpInside" id="jiT-Xf-1JN"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -115,7 +115,7 @@
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="loginButtonDidPressed:" destination="-1" eventType="touchUpInside" id="B5C-Aw-Kmb"/>
+                                        <action selector="loginButtonDidPress:" destination="-1" eventType="touchUpInside" id="Cno-Ui-aPV"/>
                                     </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="8aj-ke-RZE">
@@ -157,7 +157,7 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="showCatsButtonDidPressed:" destination="-1" eventType="touchUpInside" id="3cU-dB-WpX"/>
+                                        <action selector="showCatsButtonDidPress:" destination="-1" eventType="touchUpInside" id="of0-nt-h4a"/>
                                     </connections>
                                 </button>
                             </subviews>

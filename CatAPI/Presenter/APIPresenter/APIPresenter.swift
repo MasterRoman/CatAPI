@@ -25,7 +25,7 @@ class APIPresenter: NSObject {
         self.apiDelegate?.pushMainVC()
     }
 
-    func showApiWebPage() {
+    func showApiWebPages() {
         self.apiDelegate?.showAPIWebPage()
     }
     
