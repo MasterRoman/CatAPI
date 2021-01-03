@@ -186,7 +186,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     private func unSubscribeOnKeyBoardEvent(){
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-      }
+    }
     
     @objc private func keyBoardWillShow(notification : Notification){
         let screen : CGRect = UIScreen.main.bounds
@@ -209,11 +209,16 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     }
     
     func showApiEnteranceVC() {
-        //create and show enterence by means of API
+        let apiVC : APIViewController =  APIViewController.init(nibName: "APIViewController", bundle: nil)
+     
+        self.present(apiVC, animated: true, completion: nil)
+        
+        
     }
 
     func closeVC() {
         self.dismiss(animated: true, completion: nil)
+        
     }
     
 }
