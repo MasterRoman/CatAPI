@@ -28,7 +28,7 @@ class NetworkManager: NSObject {
     }
     
     func loadCats(url:String,completion:@escaping (Result<Array<CatModel>,Error>)->()){
-        let url : URL =  URL.init(fileURLWithPath: url)
+        let url : URL =  URL(string: url)!
         let dataTask : URLSessionDataTask = self.session.dataTask(with: url) { (data, response, error) in
             if (error != nil){
                 completion(.failure(error!))

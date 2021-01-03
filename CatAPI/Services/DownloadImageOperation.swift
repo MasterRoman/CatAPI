@@ -26,7 +26,7 @@ class DownloadImageOperation: Operation {
             return;
         }
        
-        let url : URL = URL.init(fileURLWithPath : self.url)
+        let url : URL = URL(string: self.url)!
         self.dataTask = URLSession.shared.dataTask(with: url, completionHandler:{ [weak self] data,response,error in
             if (self!.isCancelled){
                 return;

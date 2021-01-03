@@ -33,7 +33,8 @@ class APIViewController: UIViewController,APIDelegateProtocol {
     }
     
     func showAPIWebPage() {
-        UIApplication.shared.open(URL.init(fileURLWithPath: "https://thecatapi.com/signup"), options:[:], completionHandler: nil)
+        let url : URL = URL(string : "https://thecatapi.com/signup")!
+        UIApplication.shared.open(url, options:[:], completionHandler: nil)
     }
     
     
