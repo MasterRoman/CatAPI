@@ -60,5 +60,44 @@ class UserManager: NSObject {
         
     }
     
+    func checkUserStatus()->Bool{
+        if ((UserDefaults.standard.object(forKey: "Users")) != nil){
+            let users : Array<Dictionary> = UserDefaults.standard.object(forKey: "Users") as! Array<Dictionary<String, Any>>
+            for user in users{
+                let localStatus : Bool = user["IsActive"] as! Bool
+                if (localStatus){
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func checkUserAPI()->String?{
+        if ((UserDefaults.standard.object(forKey: "Users")) != nil){
+            let users : Array<Dictionary> = UserDefaults.standard.object(forKey: "Users") as! Array<Dictionary<String, Any>>
+            for user in users{
+                let localStatus : Bool = user["IsActive"] as! Bool
+                if (localStatus){
+                    return (user["ApiKey"] as! String)
+                }
+            }
+        }
+        return nil
+    }
+    
+    func logOut(){
+        if ((UserDefaults.standard.object(forKey: "Users")) != nil){
+            var users : Array<Dictionary> = UserDefaults.standard.object(forKey: "Users") as! Array<Dictionary<String, Any>>
+            for i in 0..<users.count {
+                if (users[i]["IsActive"] as! Bool){
+                    users[i]["IsActive"] = false
+                    UserDefaults.standard.set(users, forKey: "Users")
+                }
+            }
+        }
+    }
+    
+    
 }
 
