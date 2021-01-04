@@ -30,9 +30,14 @@ class UserManager: NSObject {
     
     func checkUserRegistration(login : String,password : String) ->Bool{
         if ((UserDefaults.standard.object(forKey: "Users")) != nil){
-            let users : Array<Dictionary> = UserDefaults.standard.object(forKey: "Users") as! Array<Dictionary<String, Any>>
-            for user in users {
-                
+            var users : Array<Dictionary> = UserDefaults.standard.object(forKey: "Users") as! Array<Dictionary<String, Any>>
+            for i in 0..<users.count {
+                let user : Dictionary = users[i] as Dictionary<String, Any>
+                if ((user["Login"] as! String == login) && (user["Password"] as! String == password)){
+                    users[i]["IsActive"] = true
+                    UserDefaults.standard.set(users, forKey: "Users")
+                    return true
+                }
                 
             }
         }
