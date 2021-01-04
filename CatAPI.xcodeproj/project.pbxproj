@@ -171,7 +171,7 @@
 			children = (
 				842C51F4254979F700886E42 /* AthenticationView */,
 				842C51F525497A0700886E42 /* RegistrationView */,
-				84F37358259D197D00BE451D /* APIViewController */,
+				84F37358259D197D00BE451D /* APIView */,
 			);
 			path = AthenticationViews;
 			sourceTree = "<group>";
@@ -211,14 +211,14 @@
 			path = AthenticationPresenter;
 			sourceTree = "<group>";
 		};
-		84F37358259D197D00BE451D /* APIViewController */ = {
+		84F37358259D197D00BE451D /* APIView */ = {
 			isa = PBXGroup;
 			children = (
 				84F37359259D1A0200BE451D /* APIDelegateProtocol.swift */,
 				84F3735E259D1B7700BE451D /* APIViewController.swift */,
 				84F3735F259D1B7700BE451D /* APIViewController.xib */,
 			);
-			path = APIViewController;
+			path = APIView;
 			sourceTree = "<group>";
 		};
 		84F3735B259D1A6200BE451D /* APIPresenter */ = {
