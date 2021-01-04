@@ -10,7 +10,7 @@ import Foundation
 
 class APIPresenter: NSObject {
     private var apiDelegate : APIDelegateProtocol?
-    private var userManeger : UserManager?
+    private var userManeger : UserManager!
    
     override init() {
         self.userManeger = UserManager.init()
@@ -20,8 +20,8 @@ class APIPresenter: NSObject {
         self.apiDelegate = view
     }
    
-    func registerUserAndPushMainVC(login : String!,password : String!,apiKey : String!){
-        //self.userManager registerUser:login password:password apiKey:apiKey isActive:isActive];
+    func registerUserAndPushMainVC(login : String!,password : String!,apiKey : String!,isActive : Bool){
+        self.userManeger.registerUser(login: login, password: password, apiKey: apiKey, isActive: isActive)
         self.apiDelegate?.pushMainVC()
     }
 

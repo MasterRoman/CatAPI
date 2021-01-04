@@ -10,9 +10,9 @@ import UIKit
 
 class AthenticationPresenter: NSObject {
     var athenticationalDelegate : AthenticationDelegateProtocol?
-    
+    private var userManager : UserManager!
     override init() {
-        
+        self.userManager = UserManager.init()
     }
     
     func setAthenticationalViewDelegate(view:AthenticationDelegateProtocol) {
@@ -20,16 +20,16 @@ class AthenticationPresenter: NSObject {
     }
     
     func checkUser(login:String,password:String) {
-        //working with User Maneger
-//        let user : Bool? // =
-//        if let curUser = user {
-//            push registered user
-//            //
-//        }
-//        else {
+       // working with User Maneger
+        let user : Bool = self.userManager.checkUserRegistration(login: login, password: password)
+        if (user) {
+            //push registered user
+            self.athenticationalDelegate?.pushRegisteredUser()
+        }
+        else {
             self.athenticationalDelegate?.showWrongLoginOrPassword()
-            //wrong login or password
-//        }
+           // wrong login or password
+        }
           
     }
     
@@ -48,8 +48,7 @@ class AthenticationPresenter: NSObject {
     }
     
     func autoAuthenticateUser() -> Bool {
-        //working with User Maneger
-        return true;
+        return self.userManager.checkUserStatus()
     }
     
     
