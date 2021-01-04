@@ -50,7 +50,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         self.positionConstantraint = self.viewBox.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant:-25)
         NSLayoutConstraint.activate([
             self.viewBox.widthAnchor.constraint(equalToConstant: screen.width - 60),
-            self.viewBox.heightAnchor.constraint(equalToConstant: screen.height / 2.5),
+            self.viewBox.heightAnchor.constraint(equalToConstant: screen.height / 3.0),
             self.viewBox.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.positionConstantraint,
         ])
@@ -144,7 +144,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         NSLayoutConstraint.activate([
             self.cancelButton.bottomAnchor.constraint(equalTo: self.viewBox.bottomAnchor,constant: -5.0),
             self.cancelButton.leadingAnchor.constraint(equalTo: self.viewBox.leadingAnchor,constant: 10.0),
-            self.cancelButton.topAnchor.constraint(equalTo: self.passwordTextField.bottomAnchor,constant: 20),
+            self.cancelButton.heightAnchor.constraint(equalToConstant: (screen.height - 60) / 8.0 - 15),
             self.cancelButton.widthAnchor.constraint(equalToConstant: (screen.width - 60) / 2.0 - 15)
             
         ])
@@ -161,7 +161,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         NSLayoutConstraint.activate([
             self.createButton.bottomAnchor.constraint(equalTo: self.viewBox.bottomAnchor,constant: -5.0),
             self.createButton.trailingAnchor.constraint(equalTo: self.viewBox.trailingAnchor,constant: -10.0),
-            self.createButton.topAnchor.constraint(equalTo: self.passwordTextField.bottomAnchor,constant: 20),
+            self.createButton.heightAnchor.constraint(equalToConstant: (screen.height - 60) / 8.0 - 15),
             self.createButton.widthAnchor.constraint(equalToConstant: (screen.width - 60) / 2.0 - 15)
             
         ])

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,12 +32,12 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="API" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4Z-f9-vxm">
                             <rect key="frame" x="20" y="45" width="200" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             <connections>
                                 <action selector="textFieldDidEdit:" destination="-1" eventType="editingChanged" id="UjD-XD-29p"/>
                             </connections>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCd-AZ-uvp">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCd-AZ-uvp">
                             <rect key="frame" x="79" y="125" width="82" height="30"/>
                             <state key="normal" title="Get API-key"/>
                             <connections>
@@ -44,7 +45,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="hoH-rd-r6j" firstAttribute="leading" secondItem="8tc-Un-Urb" secondAttribute="leading" constant="20" id="0dp-Me-mgq"/>
                         <constraint firstAttribute="trailing" secondItem="h4Z-f9-vxm" secondAttribute="trailing" constant="20" id="5w6-ZD-m4u"/>
@@ -57,7 +58,7 @@
                         <constraint firstItem="h4Z-f9-vxm" firstAttribute="leading" secondItem="8tc-Un-Urb" secondAttribute="leading" constant="20" id="inS-hV-zhV"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVc-BC-2Mh">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVc-BC-2Mh">
                     <rect key="frame" x="140" y="155.5" width="55" height="30"/>
                     <state key="normal" title="Confirm"/>
                     <connections>
@@ -65,6 +66,7 @@
                     </connections>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="UCd-AZ-uvp" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="9dR-KN-Qg6"/>
@@ -75,8 +77,12 @@
                 <constraint firstItem="8tc-Un-Urb" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="x7A-7y-pf7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="74.637681159420296" y="-76.339285714285708"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
