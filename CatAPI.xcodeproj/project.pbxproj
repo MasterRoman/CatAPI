@@ -29,6 +29,9 @@
 		84F37360259D1B7700BE451D /* APIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3735E259D1B7700BE451D /* APIViewController.swift */; };
 		84F37361259D1B7700BE451D /* APIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F3735F259D1B7700BE451D /* APIViewController.xib */; };
 		84FB87BB25A496FA00097466 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB87BA25A496FA00097466 /* MainPresenter.swift */; };
+		84FB87C125A4981A00097466 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB87C025A4981A00097466 /* MainTabBarController.swift */; };
+		84FB87C525A49BD700097466 /* CatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB87C425A49BD700097466 /* CatViewController.swift */; };
+		84FB87CB25A49D0500097466 /* CatViewDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB87CA25A49D0500097466 /* CatViewDelegateProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		84F3735E259D1B7700BE451D /* APIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewController.swift; sourceTree = "<group>"; };
 		84F3735F259D1B7700BE451D /* APIViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APIViewController.xib; sourceTree = "<group>"; };
 		84FB87BA25A496FA00097466 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		84FB87C025A4981A00097466 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		84FB87C425A49BD700097466 /* CatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewController.swift; sourceTree = "<group>"; };
+		84FB87CA25A49D0500097466 /* CatViewDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewDelegateProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +242,7 @@
 		84FB87B525A4950900097466 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				84FB87C025A4981A00097466 /* MainTabBarController.swift */,
 				84FB87B625A4959B00097466 /* FirstTab */,
 				84FB87B725A495B300097466 /* SecondTab */,
 				84FB87B825A495BC00097466 /* ThirdTab */,
@@ -246,6 +253,8 @@
 		84FB87B625A4959B00097466 /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
+				84FB87C425A49BD700097466 /* CatViewController.swift */,
+				84FB87CA25A49D0500097466 /* CatViewDelegateProtocol.swift */,
 			);
 			path = FirstTab;
 			sourceTree = "<group>";
@@ -374,8 +383,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FB87C525A49BD700097466 /* CatViewController.swift in Sources */,
 				84AAAD5E2554401400B67586 /* CatModel.swift in Sources */,
 				842C51CE254978A000886E42 /* AppDelegate.swift in Sources */,
+				84FB87C125A4981A00097466 /* MainTabBarController.swift in Sources */,
 				84FB87BB25A496FA00097466 /* MainPresenter.swift in Sources */,
 				84AAAD60255442C100B67586 /* JSONParser.swift in Sources */,
 				84F3735D259D1A8B00BE451D /* APIPresenter.swift in Sources */,
@@ -388,6 +399,7 @@
 				84F3735A259D1A0200BE451D /* APIDelegateProtocol.swift in Sources */,
 				84F37360259D1B7700BE451D /* APIViewController.swift in Sources */,
 				84AAAD6225546CAD00B67586 /* NetworkManager.swift in Sources */,
+				84FB87CB25A49D0500097466 /* CatViewDelegateProtocol.swift in Sources */,
 				84DD112B254DF10C0032E2B4 /* AthenticationPresenter.swift in Sources */,
 				842C51FA25497A9700886E42 /* AthenticationViewController.swift in Sources */,
 				842C51D0254978A000886E42 /* SceneDelegate.swift in Sources */,
