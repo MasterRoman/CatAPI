@@ -28,6 +28,7 @@
 		84F3735D259D1A8B00BE451D /* APIPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3735C259D1A8B00BE451D /* APIPresenter.swift */; };
 		84F37360259D1B7700BE451D /* APIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3735E259D1B7700BE451D /* APIViewController.swift */; };
 		84F37361259D1B7700BE451D /* APIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F3735F259D1B7700BE451D /* APIViewController.xib */; };
+		84FB87BB25A496FA00097466 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FB87BA25A496FA00097466 /* MainPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		84F3735C259D1A8B00BE451D /* APIPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPresenter.swift; sourceTree = "<group>"; };
 		84F3735E259D1B7700BE451D /* APIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewController.swift; sourceTree = "<group>"; };
 		84F3735F259D1B7700BE451D /* APIViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APIViewController.xib; sourceTree = "<group>"; };
+		84FB87BA25A496FA00097466 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				84DD1129254DF0D70032E2B4 /* AthenticationPresenter */,
 				84780B1D259A33C900275002 /* RegistrationPresenter */,
 				84F3735B259D1A6200BE451D /* APIPresenter */,
+				84FB87B925A496B400097466 /* MainPresenter */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -259,6 +262,14 @@
 			children = (
 			);
 			path = ThirdTab;
+			sourceTree = "<group>";
+		};
+		84FB87B925A496B400097466 /* MainPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				84FB87BA25A496FA00097466 /* MainPresenter.swift */,
+			);
+			path = MainPresenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +376,7 @@
 			files = (
 				84AAAD5E2554401400B67586 /* CatModel.swift in Sources */,
 				842C51CE254978A000886E42 /* AppDelegate.swift in Sources */,
+				84FB87BB25A496FA00097466 /* MainPresenter.swift in Sources */,
 				84AAAD60255442C100B67586 /* JSONParser.swift in Sources */,
 				84F3735D259D1A8B00BE451D /* APIPresenter.swift in Sources */,
 				84780B1F259A33F300275002 /* RegistrationPresenter.swift in Sources */,
