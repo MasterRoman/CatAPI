@@ -151,6 +151,7 @@
 		842C51F12549799300886E42 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84FB87B525A4950900097466 /* MainScreen */,
 				842C51F3254979DA00886E42 /* AthenticationViews */,
 			);
 			path = View;
@@ -227,6 +228,37 @@
 				84F3735C259D1A8B00BE451D /* APIPresenter.swift */,
 			);
 			path = APIPresenter;
+			sourceTree = "<group>";
+		};
+		84FB87B525A4950900097466 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84FB87B625A4959B00097466 /* FirstTab */,
+				84FB87B725A495B300097466 /* SecondTab */,
+				84FB87B825A495BC00097466 /* ThirdTab */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		84FB87B625A4959B00097466 /* FirstTab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FirstTab;
+			sourceTree = "<group>";
+		};
+		84FB87B725A495B300097466 /* SecondTab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SecondTab;
+			sourceTree = "<group>";
+		};
+		84FB87B825A495BC00097466 /* ThirdTab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
