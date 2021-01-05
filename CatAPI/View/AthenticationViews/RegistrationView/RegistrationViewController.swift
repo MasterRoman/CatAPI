@@ -50,7 +50,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         self.positionConstantraint = self.viewBox.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant:-25)
         NSLayoutConstraint.activate([
             self.viewBox.widthAnchor.constraint(equalToConstant: screen.width - 60),
-            self.viewBox.heightAnchor.constraint(equalToConstant: screen.height / 3.0),
+            self.viewBox.heightAnchor.constraint(equalToConstant: screen.height / 2.7),
             self.viewBox.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.positionConstantraint,
         ])
@@ -108,7 +108,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
             self.loginTextField.trailingAnchor.constraint(equalTo: self.viewBox.trailingAnchor, constant: -10.0),
         ])
         
-
+        self.loginTextField.addTarget(self, action: #selector(self.loginTextFieldDidEdit(_:)), for: .editingChanged)
       
         self.passwordTextField = UITextField.init(frame: CGRect.zero)
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -133,6 +133,8 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
             self.passwordTextField.trailingAnchor.constraint(equalTo: self.viewBox.trailingAnchor, constant: -10.0),
         ])
         
+        self.passwordTextField.addTarget(self, action: #selector(self.passwordTextFieldDidEdit(_:)), for: .editingChanged)
+        self.passwordTextField.autocorrectionType = .no
         
         self.cancelButton = UIButton.init(type: .system)
         self.cancelButton.backgroundColor = UIColor.systemGray5
@@ -166,7 +168,8 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
             
         ])
         
-         self.createButton.addTarget(self, action: #selector(self.createButtonDidPress), for: .touchUpInside)
+        self.createButton.addTarget(self, action: #selector(self.createButtonDidPress), for: .touchUpInside)
+        self.createButton.isEnabled = false
     }
     
     @objc private func cancelButtonDidPress(){
@@ -175,6 +178,26 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     
     @objc private func createButtonDidPress(){
         presenter.checkUserEnteredLogin(userLogin: self.loginTextField.text!)
+    }
+    
+    @objc private func loginTextFieldDidEdit(_ sender : UITextField){
+        if (!(sender.text!.isEmpty) && !(self.passwordTextField.text!.isEmpty)){
+            self.createButton.isEnabled = true
+            self.createButton.alpha = 1.0
+        } else {
+            self.createButton.isEnabled = false
+            self.createButton.alpha = 0.5
+        }
+    }
+    
+    @objc private func passwordTextFieldDidEdit(_ sender : UITextField){
+        if (!(sender.text!.isEmpty) && !(self.loginTextField.text!.isEmpty)){
+            self.createButton.isEnabled = true
+            self.createButton.alpha = 1.0
+        } else {
+            self.createButton.isEnabled = false
+            self.createButton.alpha = 0.5
+        }
     }
     
     private func subscribeOnKeyBoardEvent(){
@@ -190,8 +213,8 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     
     @objc private func keyBoardWillShow(notification : Notification){
         let screen : CGRect = UIScreen.main.bounds
-        let rect : CGRect = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-        self.positionConstantraint.constant =  rect.size.height - (screen.height)/2.0
+      // let rect : CGRect = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        self.positionConstantraint.constant =  -(screen.height)/8.0
         
     }
     
