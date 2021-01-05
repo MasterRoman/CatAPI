@@ -40,6 +40,8 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     }
     
     func setUpView(){
+        self.view.backgroundColor = UIColor.clear
+        
         let screen = UIScreen.main.bounds
         self.viewBox = UIView.init(frame: CGRect.zero)
         self.viewBox.backgroundColor = UIColor.systemGroupedBackground
@@ -183,20 +185,17 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     @objc private func loginTextFieldDidEdit(_ sender : UITextField){
         if (!(sender.text!.isEmpty) && !(self.passwordTextField.text!.isEmpty)){
             self.createButton.isEnabled = true
-            self.createButton.alpha = 1.0
         } else {
             self.createButton.isEnabled = false
-            self.createButton.alpha = 0.5
         }
     }
     
     @objc private func passwordTextFieldDidEdit(_ sender : UITextField){
         if (!(sender.text!.isEmpty) && !(self.loginTextField.text!.isEmpty)){
             self.createButton.isEnabled = true
-            self.createButton.alpha = 1.0
-        } else {
+        } else
+        {
             self.createButton.isEnabled = false
-            self.createButton.alpha = 0.5
         }
     }
     
@@ -233,10 +232,8 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     
     func showApiEnteranceVC() {
         let apiVC : APIViewController =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self.loginTextField.text!,password: self.passwordTextField.text!)
-     
         self.present(apiVC, animated: true, completion: nil)
-        
-        
+
     }
 
     func closeVC() {

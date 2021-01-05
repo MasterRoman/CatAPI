@@ -96,7 +96,9 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
     // MARK:Delegate methods
     
     func showUnregisterMainController() {
-        //
+        let tabBarVC : MainTabBarController = MainTabBarController.init()
+        
+        self.navigationController?.pushViewController(tabBarVC, animated: true)
     }
     
     func pushRegistrationVC() {
@@ -106,7 +108,9 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
     }
     
     func pushRegisteredUser() {
-        //
+        let tabBarVC : MainTabBarController = MainTabBarController.init()
+        
+        self.navigationController?.pushViewController(tabBarVC, animated: true)
     }
     
     func showWrongLoginOrPassword() {
@@ -115,7 +119,7 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
         alert.addAction(alertAction)
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     
     
 }

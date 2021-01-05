@@ -56,6 +56,7 @@ class APIViewController: UIViewController,APIDelegateProtocol {
     // MARK: Delegate methods
     
     func pushMainVC() {
+        let tabBarVC : MainTabBarController = MainTabBarController.init()
         //
     }
     
