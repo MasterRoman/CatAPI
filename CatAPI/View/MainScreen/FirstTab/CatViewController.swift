@@ -19,8 +19,10 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.presenter = MainPresenter.init()
         self.presenter?.setMainViewDelegate(view: self)
+        
         self.setUpCollectionView()
     }
     
@@ -37,7 +39,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        self.presenter?.registerCell(for: self.collectionView!)
+        self.presenter!.registerCell(for: self.collectionView!)
         
         self.view.addSubview(self.collectionView!)
         
@@ -52,6 +54,10 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         
     }
   
+    
+    func changeLayout(){
+        
+    }
     
     // MARK: protocol methods
 
