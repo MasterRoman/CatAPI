@@ -97,36 +97,40 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
     
     func showUnregisterMainController() {
         DispatchQueue.main.async {[weak self] in
+            guard let self = self else {return}
             let tabBarVC : MainTabBarController = MainTabBarController.init()
             
-            self!.navigationController?.pushViewController(tabBarVC, animated: true)
+            self.navigationController?.pushViewController(tabBarVC, animated: true)
         }
     }
     
     func pushRegistrationVC() {
         DispatchQueue.main.async {[weak self] in
+            guard let self = self else {return}
             let registrationVC : RegistrationViewController = RegistrationViewController.init()
             
-            self!.navigationController?.present(registrationVC, animated: true, completion: nil)
+            self.navigationController?.present(registrationVC, animated: true, completion: nil)
         }
         
     }
     
     func pushRegisteredUser() {
         DispatchQueue.main.async {[weak self] in
+            guard let self = self else {return}
             let tabBarVC : MainTabBarController = MainTabBarController.init()
             
-            self!.navigationController?.pushViewController(tabBarVC, animated: true)
+            self.navigationController?.pushViewController(tabBarVC, animated: true)
         }
         
     }
     
     func showWrongLoginOrPassword() {
         DispatchQueue.main.async {[weak self] in
+            guard let self = self else {return}
             let alert : UIAlertController = UIAlertController.init(title: "Wrong data", message: "Wrong login or password", preferredStyle: .alert)
             let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(alertAction)
-            self!.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

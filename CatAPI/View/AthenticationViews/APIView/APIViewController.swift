@@ -60,9 +60,10 @@ class APIViewController: UIViewController,APIDelegateProtocol {
     
     func pushMainVC() {
         DispatchQueue.main.async { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
-            if (self?.completion != nil){
-                self?.completion!(true)
+            guard let self = self else {return}
+            self.dismiss(animated: true, completion: nil)
+            if (self.completion != nil){
+                self.completion!(true)
             }
         }
     }

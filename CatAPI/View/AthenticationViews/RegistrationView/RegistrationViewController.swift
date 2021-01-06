@@ -237,24 +237,26 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     
     func showAlertOfExisting() {
         DispatchQueue.main.async {[weak self] in
+            guard let self = self else {return}
             let alertController : UIAlertController = UIAlertController.init(title: "", message: "Current login is already exist. Try another one.", preferredStyle: .alert)
             let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(alertAction)
-            self!.present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
     func showApiEnteranceVC() {
         
         DispatchQueue.main.async {[weak self] in
+            guard let self = self else {return}
             let completion = {  (flag : Bool) in
                 if flag{
-                    self?.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
-            self!.apiVC =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self!.loginTextField.text!,password: self!.passwordTextField.text!,completion : completion)
+            self.apiVC =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self.loginTextField.text!,password: self.passwordTextField.text!,completion : completion)
             
-            self!.present(self!.apiVC!, animated: true, completion: nil)
+            self.present(self.apiVC!, animated: true, completion: nil)
         }
         
     }
