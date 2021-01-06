@@ -20,6 +20,14 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     private var createButton : UIButton!
     private var positionConstantraint : NSLayoutConstraint!
     
+    private var apiVC : APIViewController?
+
+    //        if let api = self.apiVC {
+    //            if (api.isRegistered!) {
+    //                self.dismiss(animated: true, completion: nil)
+    //            }
+    //        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpView()
@@ -30,6 +38,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     }
 
     override func viewWillAppear(_ animated: Bool) {
+       
         super.viewWillAppear(animated)
         subscribeOnKeyBoardEvent()
     }
@@ -38,6 +47,8 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         super.viewWillDisappear(animated)
         unSubscribeOnKeyBoardEvent()
     }
+    
+
     
     func setUpView(){
         self.view.backgroundColor = UIColor.clear
@@ -180,6 +191,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     
     @objc private func createButtonDidPress(){
         presenter.checkUserEnteredLogin(userLogin: self.loginTextField.text!)
+        
     }
     
     @objc private func loginTextFieldDidEdit(_ sender : UITextField){
@@ -231,8 +243,14 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     }
     
     func showApiEnteranceVC() {
-        let apiVC : APIViewController =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self.loginTextField.text!,password: self.passwordTextField.text!)
-        self.present(apiVC, animated: true, completion: nil)
+        let completion = { [weak self] (flag : Bool) in
+            if flag{
+            self?.dismiss(animated: false, completion: nil)
+            }
+        }
+        self.apiVC =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self.loginTextField.text!,password: self.passwordTextField.text!,completion : completion)
+        
+        self.present(self.apiVC!, animated: true, completion: nil)
 
     }
 

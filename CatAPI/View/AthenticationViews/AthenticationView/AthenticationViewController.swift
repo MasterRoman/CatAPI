@@ -104,13 +104,15 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
     func pushRegistrationVC() {
         let registrationVC : RegistrationViewController = RegistrationViewController.init()
         
-        self.present(registrationVC, animated: true, completion: nil)
+        self.navigationController?.present(registrationVC, animated: true, completion: nil)
+       
     }
     
     func pushRegisteredUser() {
         let tabBarVC : MainTabBarController = MainTabBarController.init()
         
         self.navigationController?.pushViewController(tabBarVC, animated: true)
+        
     }
     
     func showWrongLoginOrPassword() {

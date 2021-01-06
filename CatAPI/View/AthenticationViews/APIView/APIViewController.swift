@@ -16,10 +16,13 @@ class APIViewController: UIViewController,APIDelegateProtocol {
     private var login : String!
     private var password : String!
     
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?,login : String!,password : String!) {
+    private var completion : ((Bool) -> Void)?
+    
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?,login : String!,password : String!,completion : @escaping ((Bool) -> Void)) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.login = login
         self.password = password
+        self.completion = completion
     }
     
     required init?(coder: NSCoder) {
@@ -56,8 +59,10 @@ class APIViewController: UIViewController,APIDelegateProtocol {
     // MARK: Delegate methods
     
     func pushMainVC() {
-        let tabBarVC : MainTabBarController = MainTabBarController.init()
-        //
+        self.dismiss(animated: true, completion: nil)
+        if (self.completion != nil){
+            self.completion!(true)
+        }
     }
     
     func showAPIWebPage() {
