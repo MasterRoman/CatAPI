@@ -9,9 +9,18 @@
 import UIKit
 
 class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,CatViewDelegateProtocol {
+    
+    var collectionView: UICollectionView!
+    
+    var layout: UICollectionViewFlowLayout!
+    
+    var numberOfItems: Int = 0
+    
+    
+   
+   
    
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,5 +36,27 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         return cell
     }
     
+    // MARK: protocol methods
+
+    
+    func showCats(array: Array<CatModel>) {
+        
+    }
+    
+    func addMoreImages(array: Array<CatModel>) {
+        
+    }
+    
+    func presentDetailViewController(controller: UIViewController?) {
+        
+    }
+    
+    func showAlertController(error: String?) {
+        
+    }
+    
+    func startIndicator() {
+        
+    }
     
 }
