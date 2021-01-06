@@ -19,7 +19,7 @@ class MainPresenter: NSObject {
         self.networkManeger = NetworkManager.init(withParser: self.parser!)
     }
     
-    func setAPIViewDelegate(view : CatViewDelegateProtocol){
+    func setMainViewDelegate(view : CatViewDelegateProtocol){
         self.catDelegate = view
     }
     
