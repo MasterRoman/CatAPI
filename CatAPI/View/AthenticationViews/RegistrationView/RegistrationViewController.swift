@@ -249,7 +249,7 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
         DispatchQueue.main.async {[weak self] in
             let completion = {  (flag : Bool) in
                 if flag{
-                    self?.dismiss(animated: false, completion: nil)
+                    self?.dismiss(animated: true, completion: nil)
                 }
             }
             self!.apiVC =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self!.loginTextField.text!,password: self!.passwordTextField.text!,completion : completion)
