@@ -236,24 +236,29 @@ class RegistrationViewController: UIViewController,RegistrationDelegateProtocol 
     // MARK: Delegate methods
     
     func showAlertOfExisting() {
-        let alertController : UIAlertController = UIAlertController.init(title: "", message: "Current login is already exist. Try another one.", preferredStyle: .alert)
-        let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(alertAction)
-        self.present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.async {[weak self] in
+            let alertController : UIAlertController = UIAlertController.init(title: "", message: "Current login is already exist. Try another one.", preferredStyle: .alert)
+            let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(alertAction)
+            self!.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func showApiEnteranceVC() {
-        let completion = { [weak self] (flag : Bool) in
-            if flag{
-            self?.dismiss(animated: false, completion: nil)
-            }
-        }
-        self.apiVC =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self.loginTextField.text!,password: self.passwordTextField.text!,completion : completion)
         
-        self.present(self.apiVC!, animated: true, completion: nil)
-
+        DispatchQueue.main.async {[weak self] in
+            let completion = {  (flag : Bool) in
+                if flag{
+                    self?.dismiss(animated: false, completion: nil)
+                }
+            }
+            self!.apiVC =  APIViewController.init(nibName: "APIViewController", bundle: nil,login: self!.loginTextField.text!,password: self!.passwordTextField.text!,completion : completion)
+            
+            self!.present(self!.apiVC!, animated: true, completion: nil)
+        }
+        
     }
-
+    
     func closeVC() {
         self.dismiss(animated: true, completion: nil)
         

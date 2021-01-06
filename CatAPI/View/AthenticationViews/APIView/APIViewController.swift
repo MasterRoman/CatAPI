@@ -59,15 +59,19 @@ class APIViewController: UIViewController,APIDelegateProtocol {
     // MARK: Delegate methods
     
     func pushMainVC() {
-        self.dismiss(animated: true, completion: nil)
-        if (self.completion != nil){
-            self.completion!(true)
+        DispatchQueue.main.async { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+            if (self?.completion != nil){
+                self?.completion!(true)
+            }
         }
     }
     
     func showAPIWebPage() {
-        let url : URL = URL(string : "https://thecatapi.com/signup")!
-        UIApplication.shared.open(url, options:[:], completionHandler: nil)
+        DispatchQueue.main.async {
+            let url : URL = URL(string : "https://thecatapi.com/signup")!
+            UIApplication.shared.open(url, options:[:], completionHandler: nil)
+        }
     }
     
     

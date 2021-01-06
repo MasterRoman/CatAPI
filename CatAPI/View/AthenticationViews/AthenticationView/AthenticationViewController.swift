@@ -90,36 +90,44 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
         self.loginButton.alpha = 0.5
     }
     
-   
+    
     
     
     // MARK:Delegate methods
     
     func showUnregisterMainController() {
-        let tabBarVC : MainTabBarController = MainTabBarController.init()
-        
-        self.navigationController?.pushViewController(tabBarVC, animated: true)
+        DispatchQueue.main.async {[weak self] in
+            let tabBarVC : MainTabBarController = MainTabBarController.init()
+            
+            self!.navigationController?.pushViewController(tabBarVC, animated: true)
+        }
     }
     
     func pushRegistrationVC() {
-        let registrationVC : RegistrationViewController = RegistrationViewController.init()
+        DispatchQueue.main.async {[weak self] in
+            let registrationVC : RegistrationViewController = RegistrationViewController.init()
+            
+            self!.navigationController?.present(registrationVC, animated: true, completion: nil)
+        }
         
-        self.navigationController?.present(registrationVC, animated: true, completion: nil)
-       
     }
     
     func pushRegisteredUser() {
-        let tabBarVC : MainTabBarController = MainTabBarController.init()
-        
-        self.navigationController?.pushViewController(tabBarVC, animated: true)
+        DispatchQueue.main.async {[weak self] in
+            let tabBarVC : MainTabBarController = MainTabBarController.init()
+            
+            self!.navigationController?.pushViewController(tabBarVC, animated: true)
+        }
         
     }
     
     func showWrongLoginOrPassword() {
-        let alert : UIAlertController = UIAlertController.init(title: "Wrong data", message: "Wrong login or password", preferredStyle: .alert)
-        let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(alertAction)
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {[weak self] in
+            let alert : UIAlertController = UIAlertController.init(title: "Wrong data", message: "Wrong login or password", preferredStyle: .alert)
+            let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(alertAction)
+            self!.present(alert, animated: true, completion: nil)
+        }
     }
     
     
