@@ -24,7 +24,8 @@ class MainPresenter: NSObject {
     }
     
     func registerCell(for collectionView:UICollectionView){
-        
+        collectionView.register(CatCell.classForCoder(), forCellWithReuseIdentifier: "CellId")
+        collectionView.register(UICollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer")
     }
     
 }
