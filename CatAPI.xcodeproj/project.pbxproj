@@ -22,6 +22,7 @@
 		84AAAD5E2554401400B67586 /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD5D2554401400B67586 /* CatModel.swift */; };
 		84AAAD60255442C100B67586 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD5F255442C100B67586 /* JSONParser.swift */; };
 		84AAAD6225546CAD00B67586 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD6125546CAD00B67586 /* NetworkManager.swift */; };
+		84CE26C325A700B3002425A6 /* CatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CE26C225A700B3002425A6 /* CatCell.swift */; };
 		84DD112B254DF10C0032E2B4 /* AthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */; };
 		84F1F55D2592503900076197 /* DownloadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1F55C2592503800076197 /* DownloadImageOperation.swift */; };
 		84F3735A259D1A0200BE451D /* APIDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F37359259D1A0200BE451D /* APIDelegateProtocol.swift */; };
@@ -66,6 +67,7 @@
 		84AAAD5D2554401400B67586 /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
 		84AAAD5F255442C100B67586 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		84AAAD6125546CAD00B67586 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		84CE26C225A700B3002425A6 /* CatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCell.swift; sourceTree = "<group>"; };
 		84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenticationPresenter.swift; sourceTree = "<group>"; };
 		84F1F55C2592503800076197 /* DownloadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageOperation.swift; sourceTree = "<group>"; };
 		84F37359259D1A0200BE451D /* APIDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDelegateProtocol.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				84FB87B525A4950900097466 /* MainScreen */,
 				842C51F3254979DA00886E42 /* AthenticationViews */,
+				84CE26C125A70027002425A6 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,6 +218,14 @@
 				84780B1E259A33F300275002 /* RegistrationPresenter.swift */,
 			);
 			path = RegistrationPresenter;
+			sourceTree = "<group>";
+		};
+		84CE26C125A70027002425A6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84CE26C225A700B3002425A6 /* CatCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		84DD1129254DF0D70032E2B4 /* AthenticationPresenter */ = {
@@ -403,6 +414,7 @@
 				84F1F55D2592503900076197 /* DownloadImageOperation.swift in Sources */,
 				842C51F725497A3F00886E42 /* AthenticationDelegateProtocol.swift in Sources */,
 				84780B21259A39A500275002 /* UserManager.swift in Sources */,
+				84CE26C325A700B3002425A6 /* CatCell.swift in Sources */,
 				84780B1C259A31DB00275002 /* RegistrationDelegateProtocol.swift in Sources */,
 				84F3735A259D1A0200BE451D /* APIDelegateProtocol.swift in Sources */,
 				84F37360259D1B7700BE451D /* APIViewController.swift in Sources */,
