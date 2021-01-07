@@ -19,7 +19,7 @@ protocol CatViewDelegateProtocol {
     func showCats(array : Array<CatModel>)
     func addMoreImages(array : Array<CatModel>)
     func presentDetailViewController(controller : UIViewController?)
-    func showAlertController(error : String?)
+    func showAlertController(error : Error?)
     func startIndicator()
     
 }

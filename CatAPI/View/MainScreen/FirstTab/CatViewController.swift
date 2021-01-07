@@ -80,7 +80,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         
     }
     
-    func showAlertController(error: String?) {
+    func showAlertController(error: Error?) {
         
     }
     

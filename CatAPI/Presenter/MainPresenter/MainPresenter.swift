@@ -13,6 +13,7 @@ class MainPresenter: NSObject {
     private var catDelegate : CatViewDelegateProtocol?
     private var networkManeger : NetworkManager?
     private var parser : JSONParser?
+    private var catsArray : Array<CatModel>?
     
     private var isGridUI : Bool = false
     
@@ -31,6 +32,35 @@ class MainPresenter: NSObject {
     }
     
     //MARK: Dowloading
+    
+    func downloadCats(){
+        
+        let dispatchQueue =  DispatchQueue.global(qos: .utility)
+        dispatchQueue.async {
+            let url : String = "https://api.thecatapi.com/v1/images/search?limit=21"
+            self.networkManeger!.loadCats(url: url) { [weak self] result in
+                guard let self = self else {return}
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let array):
+                        self.catsArray = array
+                        self.catDelegate!.showCats(array: self.catsArray!)
+                    case .failure(let error):
+                        self.catDelegate!.showAlertController(error: error)
+                    }
+                }
+            }
+        }
+    }
+    
+    func dowloadImages(){
+        
+    }
+    
+    func cancelDownloadingImage(for indexPath:IndexPath){
+        self.networkManeger?.cancelDownloadingForUrl(url:(self.catsArray?[indexPath.row].url)!)
+    }
+    
     
     //MARK: Presentation
     
