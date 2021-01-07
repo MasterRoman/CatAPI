@@ -10,10 +10,8 @@ import UIKit
 
 class NetworkManager: NSObject {
     
-   
     
-    
-    var chache : NSCache<AnyObject,UIImage>
+    private var chache : NSCache<NSString,UIImage>
     private let parser : JSONParser
     private var session : URLSession
     private var operations : Dictionary<String,Array<Operation>>
@@ -64,6 +62,29 @@ class NetworkManager: NSObject {
         
     }
     
+    func getChachedImage(for url:String,completion:@escaping (Result<UIImage,Error>)->()){
+        let queue = DispatchQueue.global(qos: .utility)
+        queue.async { [weak self] in
+            guard let self = self else {return}
+            
+            let image : UIImage? = self.chache.object(forKey: url as NSString)!
+            if ((image) != nil){
+                completion(.success(image!))
+            }
+            else
+            {
+                let placeholder = UIImage.init(named: "cat")
+                completion(.success(placeholder!))
+                self.loadImageForUrl(url: url, completion: { image in
+                    self.chache.setObject(image, forKey: url as NSString)
+                    completion(.success(image))
+                })
+            }
+            
+            
+        }
+    }
     
-
+    
+    
 }

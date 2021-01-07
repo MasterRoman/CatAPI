@@ -53,7 +53,8 @@ class MainPresenter: NSObject {
         }
     }
     
-    func dowloadImages(){
+    func dowloadImage(for cell : CatCell,indexPath : IndexPath){
+        
         
     }
     
