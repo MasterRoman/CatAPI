@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,CatViewDelegateProtocol {
+class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CatViewDelegateProtocol {
     
     var collectionView: UICollectionView!
     var layout: UICollectionViewFlowLayout!
@@ -16,7 +16,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     
     private var presenter : MainPresenter?
     
-    private var dataSource : Array<CatModel>?
+    private var catsSource : Array<CatModel>?
     
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         
         self.presenter!.setMainViewDelegate(view: self)
         
-        self.dataSource = Array.init()
+        self.catsSource = Array<CatModel>.init()
         
         self.setUpCollectionView()
     }
@@ -41,6 +41,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         self.layout.sectionHeadersPinToVisibleBounds = true
         
         self.collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.layout)
+       
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
@@ -90,7 +91,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     //MARK: CollectionView DataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return catsSource!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,4 +99,62 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         //setup cell with image
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let footer : UICollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer", for: indexPath)
+        
+        return footer
+    }
+    
+    //MARK: CollectionView Delegate
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.presenter!.pushDetailVC(indexPath: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if (UIDevice.current.orientation.isLandscape){
+            self.numberOfItems = 1
+        }
+        
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        if (self.numberOfItems == 0) {
+            if (self.collectionView.frame.size.height>self.collectionView.frame.size.width) {
+                self.numberOfItems = 1;
+            }
+            else{
+                self.numberOfItems = 3;
+            }
+        }
+        //MARK: FIX IT!!!!!!!!!!
+        let width  : CGFloat = 300//((Float(self.collectionView.frame.size.width) - 40.0 - (self.numberOfItems - 1) * 5) / self.numberOfItems) as! CGFloat
+        if (self.numberOfItems == 1) {
+            let height : CGFloat = 300;
+            
+            return CGSize(width: width,height: height)
+        }
+       
+        return CGSize(width: width,height: width)
+    }
+    
+    //MARK: FLow layout Delegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if (UIDevice.current.orientation.isLandscape){
+            return 10
+        }
+        return 30
+    }
 }
+
