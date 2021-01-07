@@ -28,15 +28,16 @@ class DownloadImageOperation: Operation {
        
         let url : URL = URL(string: self.url)!
         self.dataTask = URLSession.shared.dataTask(with: url, completionHandler:{ [weak self] data,response,error in
-            if (self!.isCancelled){
+            guard let self = self else {return}
+            if (self.isCancelled){
                 return;
             }
             if (data == nil) { return; }
             let image : UIImage = UIImage.init(data: data!)!
             
-            self?.image = image;
-            if (self?.completion != nil) {
-                self?.completion!(image)
+            self.image = image;
+            if (self.completion != nil) {
+                self.completion!(image)
             }
             else {
                 return;
