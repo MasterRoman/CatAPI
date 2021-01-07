@@ -67,7 +67,7 @@ class NetworkManager: NSObject {
         queue.async { [weak self] in
             guard let self = self else {return}
             
-            let image : UIImage? = self.chache.object(forKey: url as NSString)!
+            let image : UIImage? = self.chache.object(forKey: url as NSString)
             if ((image) != nil){
                 completion(.success(image!))
             }
