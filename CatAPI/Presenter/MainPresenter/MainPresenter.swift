@@ -54,7 +54,18 @@ class MainPresenter: NSObject {
     }
     
     func dowloadImage(for cell : CatCell,indexPath : IndexPath){
-        
+        cell.catImageUrl = self.catsArray![indexPath.row].url
+        self.networkManeger?.getChachedImage(for: self.catsArray![indexPath.row].url, completion: { [weak self] result in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let image):
+                    cell.catImageView.image = image
+                case .failure(let error):
+                    self.catDelegate!.showAlertController(error: error)
+                }
+            }
+        })
         
     }
     

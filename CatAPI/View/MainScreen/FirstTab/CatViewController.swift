@@ -102,7 +102,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
-        
+        self.presenter!.dowloadImage(for: cell, indexPath: indexPath)
         return cell
     }
     
