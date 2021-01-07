@@ -29,6 +29,8 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         self.catsSource = Array<CatModel>.init()
         
         self.setUpCollectionView()
+        
+        self.presenter!.downloadCats()
     }
     
     
@@ -69,6 +71,10 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
 
     
     func showCats(array: Array<CatModel>) {
+        DispatchQueue.main.async {
+            self.catsSource = array
+            self.collectionView.reloadData()
+        }
         
     }
     
@@ -96,7 +102,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
-        //setup cell with image
+        
         return cell
     }
     
@@ -117,6 +123,9 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (!(collectionView.indexPathsForVisibleItems.contains(indexPath))) {
+            self.presenter!.cancelDownloadingImage(for: indexPath)
+        }
         
     }
     
