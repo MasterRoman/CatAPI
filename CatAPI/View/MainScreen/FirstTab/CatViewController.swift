@@ -16,12 +16,17 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     
     private var presenter : MainPresenter?
     
+    private var dataSource : Array<CatModel>?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.presenter = MainPresenter.init()
-        self.presenter?.setMainViewDelegate(view: self)
+        
+        self.presenter!.setMainViewDelegate(view: self)
+        
+        self.dataSource = Array.init()
         
         self.setUpCollectionView()
     }
@@ -89,7 +94,8 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : UICollectionViewCell = UICollectionViewCell.init()
+        let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
+        //setup cell with image
         return cell
     }
 }

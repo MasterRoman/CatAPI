@@ -14,6 +14,8 @@ class MainPresenter: NSObject {
     private var networkManeger : NetworkManager?
     private var parser : JSONParser?
     
+    private var isGridUI : Bool = false
+    
     override init() {
         self.parser = JSONParser.init()
         self.networkManeger = NetworkManager.init(withParser: self.parser!)
@@ -26,6 +28,32 @@ class MainPresenter: NSObject {
     func registerCell(for collectionView:UICollectionView){
         collectionView.register(CatCell.classForCoder(), forCellWithReuseIdentifier: "CellId")
         collectionView.register(UICollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer")
+    }
+    
+    //MARK: Dowloading
+    
+    //MARK: Presentation
+    
+    func changeLayout(){
+        if (self.catDelegate!.numberOfItems == 1) {
+            self.catDelegate!.numberOfItems = 3
+            self.isGridUI = true
+        } else {
+            self.isGridUI = false
+            self.catDelegate!.numberOfItems = 1
+        }
+        self.catDelegate!.collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    func pushDetailVC(indexPath : IndexPath){
+        let catCell = self.catDelegate!.collectionView.cellForItem(at: indexPath)
+        
+       // self.catDelegate!.presentDetailViewController(controller: )
+    }
+    
+    func saveToGallery(image : UIImage){
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        
     }
     
 }
