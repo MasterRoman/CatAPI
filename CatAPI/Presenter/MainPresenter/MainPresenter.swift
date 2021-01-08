@@ -20,6 +20,7 @@ class MainPresenter: NSObject {
     override init() {
         self.parser = JSONParser.init()
         self.networkManeger = NetworkManager.init(withParser: self.parser!)
+        self.catsArray = Array<CatModel>.init()
     }
     
     func setMainViewDelegate(view : CatViewDelegateProtocol){
@@ -40,14 +41,12 @@ class MainPresenter: NSObject {
             let url : String = "https://api.thecatapi.com/v1/images/search?limit=21"
             self.networkManeger!.loadCats(url: url) { [weak self] result in
                 guard let self = self else {return}
-                DispatchQueue.main.async {
                     switch result{
                     case .success(let array):
-                        self.catsArray = array
+                        self.catsArray!.append(contentsOf: array)
                         self.catDelegate!.showCats(array: self.catsArray!)
                     case .failure(let error):
                         self.catDelegate!.showAlertController(error: error)
-                    }
                 }
             }
         }
