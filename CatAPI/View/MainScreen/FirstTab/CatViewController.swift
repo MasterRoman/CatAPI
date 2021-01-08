@@ -30,11 +30,21 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         
         self.setUpCollectionView()
         
+        self.setUpChangeButton()
+        
         self.presenter!.downloadCats()
     }
     
     
     //MARK: setUp View
+    
+    private func setUpChangeButton(){
+        
+        let changeButton : UIBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "icon1"), style: .plain, target: self, action: #selector(self.changeLayout))
+                                    
+        self.navigationItem.rightBarButtonItem = changeButton;
+        
+    }
     
     private func setUpCollectionView(){
         self.layout = UICollectionViewFlowLayout.init()
@@ -63,8 +73,8 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
   
     
-    func changeLayout(){
-        
+    @objc func changeLayout(){
+        self.presenter!.changeLayout()
     }
     
     // MARK: protocol methods
@@ -147,8 +157,8 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
                 self.numberOfItems = 3;
             }
         }
-        //MARK: FIX IT!!!!!!!!!!
-        let width  : CGFloat = 300//((Float(self.collectionView.frame.size.width) - 40.0 - (self.numberOfItems - 1) * 5) / self.numberOfItems) as! CGFloat
+      
+        let width = (self.collectionView.frame.size.width - CGFloat(40) - CGFloat(self.numberOfItems - 1) * 5) / CGFloat(self.numberOfItems)
         if (self.numberOfItems == 1) {
             let height : CGFloat = 300;
             
