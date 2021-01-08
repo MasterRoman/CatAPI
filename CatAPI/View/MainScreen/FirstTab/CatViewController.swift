@@ -139,7 +139,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (!(collectionView.indexPathsForVisibleItems.contains(indexPath))) {
+        if (self.catsSource!.count != 0) && (!(collectionView.indexPathsForVisibleItems.contains(indexPath))) {
             self.presenter!.cancelDownloadingImage(for: indexPath)
         }
         
