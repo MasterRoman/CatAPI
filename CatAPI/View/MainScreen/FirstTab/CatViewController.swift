@@ -146,6 +146,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         if (UIDevice.current.orientation.isLandscape){
             self.numberOfItems = 1
         }
