@@ -32,19 +32,22 @@ class DownloadImageOperation: Operation {
             if (self.isCancelled){
                 return;
             }
-            if (data == nil) { return; }
+            if (data == nil) { return }
             let image : UIImage = UIImage.init(data: data!)!
             
-            self.image = image;
+            self.image = image
             if (self.completion != nil) {
                 self.completion!(image)
             }
             else {
-                return;
+                return
             }
             }
         )
         
+        if self.isCancelled{
+            return
+        }
         self.dataTask?.resume();
     }
     
