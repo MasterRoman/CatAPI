@@ -124,6 +124,12 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     
     //MARK: CollectionView Delegate
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if ((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height){
+         //download more images
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.presenter!.pushDetailVC(indexPath: indexPath)
     }
@@ -159,6 +165,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         }
       
         let width = (self.collectionView.frame.size.width - CGFloat(40) - CGFloat(self.numberOfItems - 1) * 5) / CGFloat(self.numberOfItems)
+
         if (self.numberOfItems == 1) {
             let height : CGFloat = 300;
             
