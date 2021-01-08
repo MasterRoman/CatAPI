@@ -41,7 +41,7 @@ class NetworkManager: NSObject {
         //cancel operation
         cancelDownloadingForUrl(url: url)
         let imageOperation : DownloadImageOperation = DownloadImageOperation.init(withUrl: url)
-        self.operations[url] = Array.init(arrayLiteral: imageOperation)
+        self.operations[url] = [imageOperation]
         imageOperation.completion = { image in
             completion(image)
         }
