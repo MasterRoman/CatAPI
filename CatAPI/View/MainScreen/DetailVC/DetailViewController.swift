@@ -9,16 +9,18 @@
 import UIKit
 
 class DetailViewController: UIViewController,DetailViewDelegateProtocol {
+    
     var imageView: UIImageView?
-    
     var url: String?
-    
     var saveButton: UIButton?
+    
+    var presenter : MainPresenter?
     
     required init(with image: UIImage, url: String) {
         super.init(nibName: nil, bundle: nil)
         self.imageView = UIImageView.init(image: image)
         self.url = url
+        self.presenter?.setDetailViewDelegate(view: self)
     }
     
     required init?(coder: NSCoder) {

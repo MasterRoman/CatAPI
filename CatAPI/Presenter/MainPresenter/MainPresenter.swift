@@ -11,6 +11,7 @@ import UIKit
 class MainPresenter: NSObject {
     
     private var catDelegate : CatViewDelegateProtocol?
+    private var detailDelegate : DetailViewDelegateProtocol?
     private var networkManeger : NetworkManager?
     private var parser : JSONParser?
     private var catsArray : Array<CatModel>?
@@ -25,6 +26,10 @@ class MainPresenter: NSObject {
     
     func setMainViewDelegate(view : CatViewDelegateProtocol){
         self.catDelegate = view
+    }
+    
+    func setDetailViewDelegate(view : DetailViewDelegateProtocol){
+        self.detailDelegate = view
     }
     
     func registerCell(for collectionView:UICollectionView){
@@ -87,14 +92,18 @@ class MainPresenter: NSObject {
     }
     
     func pushDetailVC(indexPath : IndexPath){
-        let catCell = self.catDelegate!.collectionView.cellForItem(at: indexPath)
-        
-       // self.catDelegate!.presentDetailViewController(controller: )
+        let catCell : CatCell = self.catDelegate!.collectionView.cellForItem(at: indexPath)! as! CatCell
+        let detailVC = DetailViewController.init(with: catCell.catImageView.image!, url: catCell.catImageUrl)
+        self.catDelegate!.presentDetailViewController(controller:detailVC)
     }
     
     func saveToGallery(image : UIImage){
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
+    }
+    
+    func presentSaveAlert(){
+        self.detailDelegate!.showSavedStatusAlert()
     }
     
 }
