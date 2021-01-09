@@ -120,7 +120,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
     
     func presentDetailViewController(controller: UIViewController?) {
-        
+        self.present(controller!, animated: true, completion: nil)
     }
     
     func showAlertController(error: Error?) {

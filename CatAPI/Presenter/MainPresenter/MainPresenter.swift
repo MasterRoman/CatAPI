@@ -94,6 +94,7 @@ class MainPresenter: NSObject {
     func pushDetailVC(indexPath : IndexPath){
         let catCell : CatCell = self.catDelegate!.collectionView.cellForItem(at: indexPath)! as! CatCell
         let detailVC = DetailViewController.init(with: catCell.catImageView.image!, url: catCell.catImageUrl)
+        detailVC.presenter = self
         self.catDelegate!.presentDetailViewController(controller:detailVC)
     }
     
