@@ -62,10 +62,6 @@ class NetworkManager: NSObject {
     }
     
     func getChachedImage(for url:String,completion:@escaping (Result<UIImage,Error>)->()){
-        let queue = DispatchQueue.global(qos: .utility)
-        queue.async { [weak self] in
-            guard let self = self else {return}
-            
             let image : UIImage? = self.chache.object(forKey: url as NSString)
             if ((image) != nil){
                 completion(.success(image!))
@@ -74,14 +70,12 @@ class NetworkManager: NSObject {
             {
                 let placeholder = UIImage.init(named: "cat")
                 completion(.success(placeholder!))
-                self.loadImageForUrl(url: url, completion: { image in
+                self.loadImageForUrl(url: url, completion: { [weak self] image in
+                    guard let self = self else {return}
                     self.chache.setObject(image, forKey: url as NSString)
                     completion(.success(image))
                 })
             }
-            
-            
-        }
     }
     
     
