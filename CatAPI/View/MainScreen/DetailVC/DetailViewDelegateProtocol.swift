@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+protocol DetailViewDelegateProtocol {
+    
+    var imageView : UIImageView? { get set }
+    var url : String? { get set }
+    var saveButton : UIButton? {get set}
+
+    init(with image : UIImage,url : String)
+    func showSavedStatusAlert()
+    
+}
