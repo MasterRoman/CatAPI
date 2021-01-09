@@ -18,6 +18,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     
     private var catsSource : Array<CatModel>?
     
+    private var indicator : UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,35 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         self.setUpChangeButton()
         
         self.presenter!.downloadCats()
+        
+        self.setUpActivityIndicator()
     }
     
     
     //MARK: setUp View
+    
+    private func setUpActivityIndicator(){
+        if #available(iOS 13, *){
+            self.indicator = UIActivityIndicatorView.init(style: .large)
+        }
+        else
+        {
+            self.indicator = UIActivityIndicatorView.init(style: .whiteLarge)
+        }
+        self.collectionView.addSubview(self.indicator!)
+        self.indicator!.color = UIColor.white
+        self.indicator!.frame = CGRect.init(x: 0, y: 0, width: 50, height: 50)
+        
+        self.indicator!.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.indicator!.centerXAnchor.constraint(equalTo: self.collectionView.centerXAnchor),
+            self.indicator!.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor),
+        ])
+        
+        self.indicator!.isUserInteractionEnabled = false
+        self.indicator!.startAnimating()
+    }
     
     private func setUpChangeButton(){
         
@@ -83,6 +109,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     func showCats(array: Array<CatModel>) {
         self.catsSource = array
         DispatchQueue.main.async {
+            self.indicator!.stopAnimating()
             self.collectionView.reloadData()
         }
         
