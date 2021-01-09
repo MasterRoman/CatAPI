@@ -22,6 +22,8 @@
 		84AAAD5E2554401400B67586 /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD5D2554401400B67586 /* CatModel.swift */; };
 		84AAAD60255442C100B67586 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD5F255442C100B67586 /* JSONParser.swift */; };
 		84AAAD6225546CAD00B67586 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAAD6125546CAD00B67586 /* NetworkManager.swift */; };
+		84CC731F25A9F6FF000AB1D7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC731E25A9F6FF000AB1D7 /* DetailViewController.swift */; };
+		84CC732525A9F716000AB1D7 /* DetailViewDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC732425A9F716000AB1D7 /* DetailViewDelegateProtocol.swift */; };
 		84CE26C325A700B3002425A6 /* CatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CE26C225A700B3002425A6 /* CatCell.swift */; };
 		84DD112B254DF10C0032E2B4 /* AthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */; };
 		84F1F55D2592503900076197 /* DownloadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1F55C2592503800076197 /* DownloadImageOperation.swift */; };
@@ -67,6 +69,8 @@
 		84AAAD5D2554401400B67586 /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
 		84AAAD5F255442C100B67586 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		84AAAD6125546CAD00B67586 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		84CC731E25A9F6FF000AB1D7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		84CC732425A9F716000AB1D7 /* DetailViewDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewDelegateProtocol.swift; sourceTree = "<group>"; };
 		84CE26C225A700B3002425A6 /* CatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCell.swift; sourceTree = "<group>"; };
 		84DD112A254DF10C0032E2B4 /* AthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenticationPresenter.swift; sourceTree = "<group>"; };
 		84F1F55C2592503800076197 /* DownloadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageOperation.swift; sourceTree = "<group>"; };
@@ -220,6 +224,15 @@
 			path = RegistrationPresenter;
 			sourceTree = "<group>";
 		};
+		84CC731D25A9F65A000AB1D7 /* DetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				84CC731E25A9F6FF000AB1D7 /* DetailViewController.swift */,
+				84CC732425A9F716000AB1D7 /* DetailViewDelegateProtocol.swift */,
+			);
+			path = DetailVC;
+			sourceTree = "<group>";
+		};
 		84CE26C125A70027002425A6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +274,7 @@
 				84FB87B625A4959B00097466 /* FirstTab */,
 				84FB87B725A495B300097466 /* SecondTab */,
 				84FB87B825A495BC00097466 /* ThirdTab */,
+				84CC731D25A9F65A000AB1D7 /* DetailVC */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -401,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FB87C525A49BD700097466 /* CatViewController.swift in Sources */,
+				84CC732525A9F716000AB1D7 /* DetailViewDelegateProtocol.swift in Sources */,
 				84FB87CF25A49DA800097466 /* UploadViewController.swift in Sources */,
 				84AAAD5E2554401400B67586 /* CatModel.swift in Sources */,
 				842C51CE254978A000886E42 /* AppDelegate.swift in Sources */,
@@ -415,6 +430,7 @@
 				842C51F725497A3F00886E42 /* AthenticationDelegateProtocol.swift in Sources */,
 				84780B21259A39A500275002 /* UserManager.swift in Sources */,
 				84CE26C325A700B3002425A6 /* CatCell.swift in Sources */,
+				84CC731F25A9F6FF000AB1D7 /* DetailViewController.swift in Sources */,
 				84780B1C259A31DB00275002 /* RegistrationDelegateProtocol.swift in Sources */,
 				84F3735A259D1A0200BE451D /* APIDelegateProtocol.swift in Sources */,
 				84F37360259D1B7700BE451D /* APIViewController.swift in Sources */,
