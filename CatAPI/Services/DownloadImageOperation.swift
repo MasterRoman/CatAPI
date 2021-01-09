@@ -33,6 +33,9 @@ class DownloadImageOperation: Operation {
                 return;
             }
             if (data == nil) { return }
+            if (self.isCancelled){
+                return;
+            }
             let image : UIImage = UIImage.init(data: data!)!
             
             self.image = image
