@@ -127,7 +127,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if ((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height){
          //download more images
-//            self.presenter!.downloadCats()
+            self.presenter!.downloadCats()
         }
     }
     
