@@ -20,7 +20,7 @@ class DetailViewController: UIViewController,DetailViewDelegateProtocol {
         super.init(nibName: nil, bundle: nil)
         self.imageView = UIImageView.init(image: image)
         self.url = url
-        self.presenter?.setDetailViewDelegate(view: self)
+       
     }
     
     required init?(coder: NSCoder) {
@@ -38,8 +38,45 @@ class DetailViewController: UIViewController,DetailViewDelegateProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter!.setDetailViewDelegate(view: self)
+        self.setUpView()
 
-     
+    }
+    
+    private func setUpView(){
+        self.view.addSubview(self.imageView!)
+        self.view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.9)
+       
+        self.imageView!.contentMode = .scaleAspectFit
+        self.imageView!.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.saveButton = UIButton.init(type: .custom)
+        let saveImage : UIImage = UIImage.init(named: "save")!
+        self.saveButton!.setImage(saveImage, for: .normal)
+        self.saveButton?.addTarget(self, action: #selector(self.saveImageToGallery), for: .touchUpInside)
+        
+        self.saveButton!.tintColor = UIColor.white
+        self.saveButton!.translatesAutoresizingMaskIntoConstraints = false
+       
+        self.imageView!.isUserInteractionEnabled = true
+        self.imageView!.addSubview(self.saveButton!)
+        
+        NSLayoutConstraint.activate([
+            self.imageView!.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.imageView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.imageView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.imageView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.saveButton!.heightAnchor.constraint(equalToConstant: 50),
+            self.saveButton!.widthAnchor.constraint(equalToConstant: 50),
+            self.saveButton!.trailingAnchor.constraint(equalTo: self.imageView!.trailingAnchor , constant: -10),
+            self.saveButton!.bottomAnchor.constraint(equalTo: self.imageView!.bottomAnchor , constant: -10),
+        ])
+        
+    }
+    
+    @objc private func saveImageToGallery(){
+        self.presenter!.saveToGallery(image: self.imageView!.image!)
+        self.presenter!.presentSaveAlert()
     }
     
 
