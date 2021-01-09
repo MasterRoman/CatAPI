@@ -51,5 +51,9 @@ class DownloadImageOperation: Operation {
         self.dataTask?.resume();
     }
     
+    override func cancel() {
+        super.cancel()
+        self.dataTask?.cancel()
+    }
     
 }
