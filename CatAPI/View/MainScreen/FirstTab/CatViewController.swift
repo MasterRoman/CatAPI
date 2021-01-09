@@ -81,8 +81,8 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
 
     
     func showCats(array: Array<CatModel>) {
+        self.catsSource = array
         DispatchQueue.main.async {
-            self.catsSource = array
             self.collectionView.reloadData()
         }
         
@@ -127,6 +127,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if ((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height){
          //download more images
+//            self.presenter!.downloadCats()
         }
     }
     
@@ -139,10 +140,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (self.catsSource!.count != 0) && (!(collectionView.indexPathsForVisibleItems.contains(indexPath))) {
             self.presenter!.cancelDownloadingImage(for: indexPath)
-        }
-        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
