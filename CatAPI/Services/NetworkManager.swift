@@ -14,7 +14,7 @@ class NetworkManager: NSObject {
     private var chache : NSCache<NSString,UIImage>
     private let parser : JSONParser
     private var session : URLSession
-    private var operations : Dictionary<String,Array<Operation>>
+    private var operations : Dictionary<String,Array<DownloadImageOperation>>
     private var queue : OperationQueue
     
     init(withParser parser:JSONParser) {
@@ -50,9 +50,8 @@ class NetworkManager: NSObject {
     }
     
     func cancelDownloadingForUrl(url:String)  {
-        let operations : Array<Operation>? = self.operations[url]
-        if let newOperations = operations{
-            for operation : Operation in newOperations {
+        if let existingOperations = self.operations[url]{
+            for operation in existingOperations {
                 operation.cancel()
             }
         }
