@@ -15,7 +15,7 @@ protocol DetailViewDelegateProtocol {
     var url : String? { get set }
     var saveButton : UIButton? {get set}
 
-    init(with image : UIImage,url : String)
+    init(with cell : CatCell)
     func showSavedStatusAlert()
     
 }

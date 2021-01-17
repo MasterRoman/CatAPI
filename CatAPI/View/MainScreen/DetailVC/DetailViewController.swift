@@ -16,10 +16,15 @@ class DetailViewController: UIViewController,DetailViewDelegateProtocol {
     
     var presenter : MainPresenter?
     
-    required init(with image: UIImage, url: String) {
+    required init(with cell:CatCell) {
         super.init(nibName: nil, bundle: nil)
-        self.imageView = UIImageView.init(image: image)
-        self.url = url
+        self.imageView = UIImageView.init(image: cell.catImageView.image)
+        self.url = cell.catImageUrl
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
        
     }
     
