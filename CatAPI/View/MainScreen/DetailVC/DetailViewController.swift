@@ -11,21 +11,23 @@ import UIKit
 class DetailViewController: UIViewController,DetailViewDelegateProtocol {
     
     var imageView: UIImageView?
-    var url: String?
     var saveButton: UIButton?
+    var catCell : CatCell?
     
     var presenter : MainPresenter?
     
     required init(with cell:CatCell) {
         super.init(nibName: nil, bundle: nil)
+        self.catCell = cell
         self.imageView = UIImageView.init(image: cell.catImageView.image)
-        self.url = cell.catImageUrl
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+        if ((self.imageView!.image!.isEqual(UIImage.init(named: "cat"))))
+        {
+            self.presenter!.downloadDetailImage(for: self.catCell!.catImageUrl)
+        }
     }
     
     required init?(coder: NSCoder) {

@@ -12,9 +12,10 @@ import UIKit
 protocol DetailViewDelegateProtocol {
     
     var imageView : UIImageView? { get set }
-    var url : String? { get set }
     var saveButton : UIButton? {get set}
 
+    var catCell : CatCell? {get set}
+    
     init(with cell : CatCell)
     func showSavedStatusAlert()
     

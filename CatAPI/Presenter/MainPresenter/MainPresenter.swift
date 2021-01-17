@@ -73,6 +73,21 @@ class MainPresenter: NSObject {
         
     }
     
+    func downloadDetailImage(for url: String){
+        self.networkManeger!.getChachedImage(for: url, completion: { [weak self] result in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let image):
+                    self.detailDelegate!.imageView!.image = image
+                    self.detailDelegate!.catCell!.catImageView.image = image
+                case .failure( _): break
+                }
+            }
+            
+        })
+    }
+    
     func cancelDownloadingImage(for indexPath:IndexPath){
         self.networkManeger?.cancelDownloadingForUrl(url:(self.catsArray?[indexPath.row].url)!)
     }
