@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842AC8AA25B7284600957FDA /* UploadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842AC8A925B7284600957FDA /* UploadPresenter.swift */; };
 		842C51CE254978A000886E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51CD254978A000886E42 /* AppDelegate.swift */; };
 		842C51D0254978A000886E42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51CF254978A000886E42 /* SceneDelegate.swift */; };
 		842C51D7254978A100886E42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842C51D6254978A100886E42 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		842AC8A925B7284600957FDA /* UploadPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPresenter.swift; sourceTree = "<group>"; };
 		842C51CA254978A000886E42 /* CatAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842C51CD254978A000886E42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842C51CF254978A000886E42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		842AC8A825B7280900957FDA /* UploadPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				842AC8A925B7284600957FDA /* UploadPresenter.swift */,
+			);
+			path = UploadPresenter;
+			sourceTree = "<group>";
+		};
 		842C51C1254978A000886E42 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +193,7 @@
 				84780B1D259A33C900275002 /* RegistrationPresenter */,
 				84F3735B259D1A6200BE451D /* APIPresenter */,
 				84FB87B925A496B400097466 /* MainPresenter */,
+				842AC8A825B7280900957FDA /* UploadPresenter */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -439,6 +450,7 @@
 				84DD112B254DF10C0032E2B4 /* AthenticationPresenter.swift in Sources */,
 				842C51FA25497A9700886E42 /* AthenticationViewController.swift in Sources */,
 				842C51D0254978A000886E42 /* SceneDelegate.swift in Sources */,
+				842AC8AA25B7284600957FDA /* UploadPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
