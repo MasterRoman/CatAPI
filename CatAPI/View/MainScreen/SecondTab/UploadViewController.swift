@@ -101,7 +101,11 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     //MARK: Delegate methods
     
     func showCats(array: Array<CatModel>) {
-        
+        self.catsSource = array
+        DispatchQueue.main.async {
+            self.indicator!.stopAnimating()
+            self.collectionView.reloadData()
+        }
     }
     
     func addMoreImages(array: Array<CatModel>) {
