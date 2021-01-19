@@ -32,6 +32,11 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.presenter.checkUserRegistration()
+    }
+    
     private func setUpCollectionView(){
         self.layout = UICollectionViewFlowLayout.init()
         self.layout.scrollDirection = .vertical
