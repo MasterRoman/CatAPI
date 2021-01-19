@@ -10,4 +10,18 @@ import Foundation
 
 protocol UploadViewDelegateProtocol {
     
+    func showCats(array : Array<CatModel>)
+    func addMoreImages(array : Array<CatModel>)
+    
+    func checkUserRegistration()
+    
+    func showAlertController()
+    func showErrorAlert(error : Error?)
+    func showAuthErrorAlert()
+   
+    func startIndicator()
+    func stopIndicator()
+    
+    
+
 }
