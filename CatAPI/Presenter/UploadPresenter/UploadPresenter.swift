@@ -38,6 +38,17 @@ class UploadPresenter: NSObject {
     
     //MARK: Downloading methods
     
+    func downloadCats(){
+        let apiKey = self.getApi()
+        let url = URL(string: "https://api.thecatapi.com/v1/images?limit=100")
+        //download cats by means of API
+        
+    }
+    
+    func uploadImages(image : UIImage,url : String){
+        //upload images to server 
+    }
+    
     func dowloadImage(for cell : CatCell,indexPath : IndexPath){
         cell.catImageUrl = self.catsArray![indexPath.row].url
         self.networkManeger?.getChachedImage(for: self.catsArray![indexPath.row].url, completion: { [weak self] result in
