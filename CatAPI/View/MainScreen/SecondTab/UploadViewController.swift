@@ -28,6 +28,8 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         self.setUpCollectionView()
         
+        self.presenter.setUploadViewDelegate(view: self)
+        
     }
     
     private func setUpCollectionView(){
@@ -41,7 +43,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        //self.presenter!.registerCell(for: self.collectionView!)
+        self.presenter!.registerCell(for: self.collectionView!)
         
         self.view.addSubview(self.collectionView!)
         
