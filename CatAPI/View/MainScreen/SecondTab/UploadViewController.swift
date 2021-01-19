@@ -80,24 +80,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     //MARK: CollectionView Delegate methods
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if ((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height){
-         //download more images
-         //   self.presenter!.downloadCats()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //    self.presenter!.pushDetailVC(indexPath: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //    self.presenter!.cancelDownloadingImage(for: indexPath)
-    }
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
