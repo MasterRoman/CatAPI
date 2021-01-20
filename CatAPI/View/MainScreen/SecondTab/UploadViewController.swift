@@ -98,7 +98,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
         //configure with image
-        
+        self.presenter.dowloadImage(for: cell, indexPath: indexPath)
         return cell
     }
     
