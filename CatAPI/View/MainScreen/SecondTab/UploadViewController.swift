@@ -31,11 +31,12 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         self.presenter.setUploadViewDelegate(view: self)
         
+        self.presenter.checkUserRegistration()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.presenter.checkUserRegistration()
+       
     }
     
     private func setUpActivityIndicator(){
@@ -97,12 +98,14 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     @objc private func uploadButtonDidPress(){
         
+        DispatchQueue.main.async {
         let picker = UIImagePickerController.init()
         picker.delegate = self.presenter
         picker.allowsEditing = true
         picker.sourceType = UIImagePickerController.SourceType.photoLibrary
         
         self.present(picker, animated: true, completion: nil)
+        }
     }
     
     //MARK: Collection view dataSorce methods 

@@ -20,7 +20,7 @@ class CatModel: NSObject {
     
     init(with url:String){
         self.url = url
-        self.imageId = "new"
+        self.imageId = ""
     }
     
 }

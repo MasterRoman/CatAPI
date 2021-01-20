@@ -114,6 +114,7 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     //MARK: Picker Delegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         let chosenImage : UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         let fileNameUrl = info[UIImagePickerController.InfoKey.imageURL]
         let fileName  : String = String.init(format: "%@", fileNameUrl as! CVarArg)
