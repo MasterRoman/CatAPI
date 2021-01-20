@@ -62,6 +62,11 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     private func setUpCollectionView(){
+        
+        let uploadButton = UIBarButtonItem.init(image: UIImage.init(named: "upload_selected"), style: .plain, target: self, action: #selector(self.uploadButtonDidPress))
+        
+        self.navigationItem.rightBarButtonItem = uploadButton
+        
         self.layout = UICollectionViewFlowLayout.init()
         self.layout.scrollDirection = .vertical
         self.layout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 0, right: 10)
@@ -88,6 +93,17 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
   
     
+    //MARK: Button selector
+    
+    @objc private func uploadButtonDidPress(){
+        
+        let picker = UIImagePickerController.init()
+        picker.delegate = self.presenter
+        picker.allowsEditing = true
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        
+        self.present(picker, animated: true, completion: nil)
+    }
     
     //MARK: Collection view dataSorce methods 
     
