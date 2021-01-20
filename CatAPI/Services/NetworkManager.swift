@@ -106,6 +106,49 @@ class NetworkManager: NSObject {
         dataTask.resume()
     }
     
+    func uploadImage(for apiKey:String,fileName : String,image : UIImage,completion:@escaping (Result<Array<CatModel>,Error>)->()){
+        
+        let boundary = "Boundary-\(NSUUID().uuidString)"
+        let strContentType = "multipart/form-data; boundary=\(boundary)"
+        let headers : Dictionary = ["content-type": strContentType ,"x-api-key":apiKey]
+        
+        let url = URL(string: "https://api.thecatapi.com/v1/images/upload")
+        
+        var request : URLRequest = URLRequest.init(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        
+        var httpBody : Data = Data.init()
+        
+        httpBody.append(Data("--\(boundary)\r\n".utf8))
+        httpBody.append(Data("Content-Disposition: form-data; name=\"file\"; filename=\"\(fileName)\"\r\n".utf8))
+        httpBody.append(Data("Content-Type: image/\(fileName.components(separatedBy: "."))\r\n\r\n".utf8))
+        httpBody.append(image.jpegData(compressionQuality: 0.7)!)
+        httpBody.append(Data("\r\n--\(boundary)\r\n".utf8))
+        
+        request.httpBody = httpBody
+       
+        let dataTask : URLSessionDataTask = self.session.dataTask(with: request, completionHandler: { (data, response, error) in
+            if (error != nil){
+                completion(.failure(error!))
+                return
+            }
+            
+            if (data != nil){
+                self.parser.parseCats(data: data, completion: completion)
+            }
+            else
+            {
+                return;
+            }
+            
+        })
+        
+        dataTask.resume()
+        
+        
+    }
     
     
     
