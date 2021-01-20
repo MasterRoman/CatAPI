@@ -58,7 +58,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         ])
         
         self.indicator!.isUserInteractionEnabled = false
-        self.indicator!.startAnimating()
+        //self.indicator!.startAnimating()
     }
     
     private func setUpCollectionView(){
@@ -154,7 +154,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     func checkUserRegistration() {
         self.presenter!.downloadCats()
-        self.startIndicator()
+       // self.startIndicator()
         
     }
     

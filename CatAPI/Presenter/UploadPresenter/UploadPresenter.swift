@@ -116,9 +116,13 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let chosenImage : UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         let fileNameUrl = info[UIImagePickerController.InfoKey.imageURL]
-        let fileName  : String = fileNameUrl as! String
+        let fileName  : String = String.init(format: "%@", fileNameUrl as! CVarArg)
         self.uploadImages(image: chosenImage, url: fileName)
         
+        let cat = CatModel.init(with: fileName)
+        self.catsArray!.append(cat)
+        self.uploadDelegate!.showCats(array: self.catsArray!)
+    
         picker.dismiss(animated: true, completion: nil)
     }
     
