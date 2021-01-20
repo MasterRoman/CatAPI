@@ -32,7 +32,7 @@ class UploadPresenter: NSObject {
     
     func registerCell(for collectionView:UICollectionView){
         collectionView.register(CatCell.classForCoder(), forCellWithReuseIdentifier: "CellId")
-//        collectionView.register(UICollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer")
+        //        collectionView.register(UICollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "Footer")
     }
     
     
@@ -40,13 +40,39 @@ class UploadPresenter: NSObject {
     
     func downloadCats(){
         let apiKey = self.getApi()
-        let url = URL(string: "https://api.thecatapi.com/v1/images?limit=100")
+        let url : String = "https://api.thecatapi.com/v1/images?limit=100"
         //download cats by means of API
+        self.networkManeger!.loadUplodedCats(for: url, apiKey: apiKey, completion: { [weak self] result in
+            guard let self = self else {return}
+           
+                switch result{
+                case .success(let array):
+                    self.catsArray!.append(contentsOf: array)
+                    self.uploadDelegate!.showCats(array: self.catsArray!)
+                //MARK: TODO: Make failure branch
+              
+                case .failure(_): break
+             
+                }
+        })
         
     }
     
     func uploadImages(image : UIImage,url : String){
-        //upload images to server 
+        //upload images to server
+        let apiKey = self.getApi()
+        self.networkManeger!.uploadImage(for: apiKey, fileName: url, image: image, completion: { [weak self] result in
+            guard let self = self else {return}
+            switch result{
+            case .success(_):
+                break
+            //MARK: TODO: Make success and failure branch
+          
+            case .failure(_): break
+                //show ALERT
+            }
+        
+        })
     }
     
     func dowloadImage(for cell : CatCell,indexPath : IndexPath){
@@ -57,9 +83,9 @@ class UploadPresenter: NSObject {
                 switch result{
                 case .success(let image):
                     cell.catImageView.image = image
-              //MARK: TODO: Make failure branch
+                //MARK: TODO: Make failure branch
                 case .failure(_): break
-                   // self.catDelegate!.showAlertController(error: error)
+                // self.catDelegate!.showAlertController(error: error)
                 }
             }
         })
