@@ -78,6 +78,35 @@ class NetworkManager: NSObject {
             }
     }
     
+    func loadUplodedCats(for url:String,apiKey : String,completion:@escaping (Result<Array<CatModel>,Error>)->()){
+        
+        let url = URL(string: url)
+        let headers : Dictionary = ["x-api-key":apiKey]
+        var request : URLRequest = URLRequest.init(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let dataTask : URLSessionDataTask = self.session.dataTask(with: request, completionHandler: { (data, response, error) in
+            if (error != nil){
+                completion(.failure(error!))
+                return
+            }
+            
+            if (data != nil){
+                self.parser.parseCats(data: data, completion: completion)
+            }
+            else
+            {
+                return;
+            }
+            
+        })
+        
+        dataTask.resume()
+    }
+    
+    
     
     
 }
