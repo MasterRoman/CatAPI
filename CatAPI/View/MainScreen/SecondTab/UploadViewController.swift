@@ -27,6 +27,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         self.catsSource = Array.init()
         
         self.setUpCollectionView()
+        self.setUpActivityIndicator()
         
         self.presenter.setUploadViewDelegate(view: self)
         
@@ -35,6 +36,29 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.presenter.checkUserRegistration()
+    }
+    
+    private func setUpActivityIndicator(){
+        if #available(iOS 13, *){
+            self.indicator = UIActivityIndicatorView.init(style: .large)
+        }
+        else
+        {
+            self.indicator = UIActivityIndicatorView.init(style: .whiteLarge)
+        }
+        self.collectionView.addSubview(self.indicator!)
+        self.indicator!.color = UIColor.white
+        self.indicator!.frame = CGRect.init(x: 0, y: 0, width: 50, height: 50)
+        
+        self.indicator!.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.indicator!.centerXAnchor.constraint(equalTo: self.collectionView.centerXAnchor),
+            self.indicator!.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor),
+        ])
+        
+        self.indicator!.isUserInteractionEnabled = false
+        self.indicator!.startAnimating()
     }
     
     private func setUpCollectionView(){
@@ -113,6 +137,8 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     func checkUserRegistration() {
+        self.presenter!.downloadCats()
+        self.startIndicator()
         
     }
     
