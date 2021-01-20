@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UploadPresenter: NSObject,UIImagePickerControllerDelegate {
+class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private var uploadDelegate : UploadViewDelegateProtocol?
     
