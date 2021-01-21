@@ -38,5 +38,9 @@ class ProfilePresenter: NSObject {
     func checkUserParameters()->Dictionary<String, Any>{
         return (self.userManeger!.getUserInfo())!
     }
+    
+    func logOut(){
+        self.userManeger!.logOut()
+    }
 
 }

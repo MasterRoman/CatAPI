@@ -35,10 +35,10 @@ class MainTabBarController: UITabBarController {
         self.profileViewController = ProfileViewController.init()
         let profileTab : UITabBarItem = UITabBarItem.init(title: nil, image: UIImage.init(named: "login_unselected"), selectedImage: UIImage.init(named: "login_selected"))
         self.profileViewController?.tabBarItem = profileTab
-        let profileNavigationController : UINavigationController = UINavigationController.init(rootViewController: self.profileViewController!)
+       // let profileNavigationController : UINavigationController = UINavigationController.init(rootViewController: self.profileViewController!)
         
         
-        self.viewControllers = [catNavigationController,uploadNavigationController,profileNavigationController]
+        self.viewControllers = [catNavigationController,uploadNavigationController,self.profileViewController! as UIViewController]
         self.selectedIndex = 0
         
     }

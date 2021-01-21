@@ -33,6 +33,11 @@ class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
         self.presenter!.checkUserStatus()
     }
     
+    @IBAction func logOutButtonDidPress(_ sender: UIButton) {
+        self.presenter!.logOut()
+        self.navigationController!.popViewController(animated: true)
+    }
+   
     func setUpView(){
     
 
