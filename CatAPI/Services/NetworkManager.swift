@@ -123,8 +123,13 @@ class NetworkManager: NSObject {
         var httpBody : Data = Data()
         httpBody.append("--\(boundary)\r\n".data(using: .utf8)!)
         httpBody.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
-      //  let str = String.init(format: "Content-Type: image/%@\r\n\r\n", String(describing: fileName.components(separatedBy: ".").last))
+       
+      // let extansion : String = fileName.components(separatedBy: ".").last!
+      //  let str = String.init(format: "Content-Type: image/%@\r\n\r\n", extansion)
+        
+        //work only with jpeg
         httpBody.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+        
         httpBody.append(image.jpegData(compressionQuality: 0.7)!)
         httpBody.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
         
