@@ -11,7 +11,7 @@ import UIKit
 class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
   
 
-    @IBOutlet var topHeaderView: UIView!
+
     
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -34,9 +34,8 @@ class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
     }
     
     func setUpView(){
-        self.topHeaderView.clipsToBounds = true
-        self.topHeaderView.layer.cornerRadius = 10
-        
+    
+
         self.loginTextField.isUserInteractionEnabled = false
         self.passwordTextField.isUserInteractionEnabled = false
         self.apiKeyTextFField.isUserInteractionEnabled = false
