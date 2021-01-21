@@ -51,7 +51,7 @@ class APIViewController: UIViewController,APIDelegateProtocol {
         
     }
     @IBAction func confirmButtonDidPress(_ sender: UIButton) {
-        self.presenter.registerUserAndPushMainVC(login: self.login!, password: self.password!, apiKey: self.textField.text!,isActive: true)
+        self.presenter.registerUserAndPushMainVC(login: self.login!, password: self.password!, apiKey: self.textField.text!,isActive: false)
     }
     @IBAction func getButtonDidPress(_ sender: UIButton) {
         self.presenter.showApiWebPages()
