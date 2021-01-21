@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="CatAPI" customModuleProvider="target">
             <connections>
+                <outlet property="apiKeyTextFField" destination="grl-y5-liY" id="r1Z-vL-ivf"/>
+                <outlet property="loginTextField" destination="ghN-K9-tFy" id="lqj-GL-QdH"/>
+                <outlet property="passwordTextField" destination="qA8-xe-No7" id="lgk-as-Uf3"/>
+                <outlet property="topHeaderView" destination="obs-bx-IQH" id="oG4-HX-aFx"/>
                 <outlet property="view" destination="zhF-DO-A9e" id="IrN-LZ-CyF"/>
             </connections>
         </placeholder>

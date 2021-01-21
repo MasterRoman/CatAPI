@@ -8,23 +8,57 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
+  
 
+    @IBOutlet var topHeaderView: UIView!
+    
+    @IBOutlet var loginTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var apiKeyTextFField: UITextField!
+    
+    private var presenter : ProfilePresenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.presenter = ProfilePresenter.init()
+        
+        self.setUpView()
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.presenter!.checkUserStatus()
     }
-    */
+    
+    func setUpView(){
+        self.topHeaderView.clipsToBounds = true
+        self.topHeaderView.layer.cornerRadius = 10
+        
+        self.loginTextField.isUserInteractionEnabled = false
+        self.passwordTextField.isUserInteractionEnabled = false
+        self.apiKeyTextFField.isUserInteractionEnabled = false
+        
+        
+    }
+
+    
+    // MARK: - Delegate methods
+    
+    func showAlertController() {
+        
+    }
+    
+    func changeProfileValues() {
+        
+    }
+    
+    func checkUserStatus() {
+        
+    }
+    
+
+    
 
 }
