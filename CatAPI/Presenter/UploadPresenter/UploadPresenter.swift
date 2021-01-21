@@ -60,19 +60,23 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     
     func uploadImages(image : UIImage,url : String){
         //upload images to server
-        let apiKey = self.getApi()
-        self.networkManeger!.uploadImage(for: apiKey, fileName: url, image: image, completion: { [weak self] result in
+        let queue = DispatchQueue.global(qos: .utility)
+        queue.async { [weak self] in
             guard let self = self else {return}
-            switch result{
-            case .success(_):
-                break
-            //MARK: TODO: Make success and failure branch
-          
-            case .failure(_): break
+            let apiKey = self.getApi()
+            self.networkManeger!.uploadImage(for: apiKey, fileName: url, image: image, completion: { result in
+
+                switch result{
+                case .success(_):
+                    break
+                //MARK: TODO: Make success and failure branch
+                
+                case .failure(_): break
                 //show ALERT
-            }
-        
-        })
+                }
+                
+            })
+        }
     }
     
     func dowloadImage(for cell : CatCell,indexPath : IndexPath){
