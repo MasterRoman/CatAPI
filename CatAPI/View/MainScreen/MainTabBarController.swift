@@ -12,6 +12,7 @@ class MainTabBarController: UITabBarController {
     
     private var catViewController : CatViewController?
     private var uploadViewController : UploadViewController?
+    private var profileViewController : ProfileViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,13 @@ class MainTabBarController: UITabBarController {
         self.uploadViewController?.tabBarItem = uploadTab
         let uploadNavigationController : UINavigationController = UINavigationController.init(rootViewController: self.uploadViewController!)
         
+        self.profileViewController = ProfileViewController.init()
+        let profileTab : UITabBarItem = UITabBarItem.init(title: nil, image: UIImage.init(named: "login_unselected"), selectedImage: UIImage.init(named: "login_selected"))
+        self.profileViewController?.tabBarItem = profileTab
+        let profileNavigationController : UINavigationController = UINavigationController.init(rootViewController: self.profileViewController!)
         
-        self.viewControllers = [catNavigationController,uploadNavigationController]
+        
+        self.viewControllers = [catNavigationController,uploadNavigationController,profileNavigationController]
         self.selectedIndex = 0
         
     }
