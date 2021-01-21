@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol ProfileViewDelegateProtocol {
+    
+    func showAlertController()
+    func changeProfileValues()
+    func checkUserStatus()
+
+}
