@@ -31,6 +31,14 @@ class AthenticationViewController: UIViewController,AthenticationDelegateProtoco
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let autoAthentication : Bool = self.presenter!.autoAuthenticateUser()
+        if (autoAthentication){
+            self.presenter!.showMainVCWithoutRegistration()
+        }
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         calculateLayout()
