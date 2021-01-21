@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8417F4E225B9D87C0054DDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F4E125B9D87C0054DDF4 /* ProfileViewController.swift */; };
+		8417F4E625B9D8CD0054DDF4 /* ProfileDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F4E525B9D8CD0054DDF4 /* ProfileDelegateProtocol.swift */; };
+		8417F4EB25B9D90A0054DDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F4EA25B9D90A0054DDF4 /* ProfilePresenter.swift */; };
 		842AC8AA25B7284600957FDA /* UploadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842AC8A925B7284600957FDA /* UploadPresenter.swift */; };
 		842C51CE254978A000886E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51CD254978A000886E42 /* AppDelegate.swift */; };
 		842C51D0254978A000886E42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51CF254978A000886E42 /* SceneDelegate.swift */; };
@@ -51,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8417F4E125B9D87C0054DDF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8417F4E525B9D8CD0054DDF4 /* ProfileDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDelegateProtocol.swift; sourceTree = "<group>"; };
+		8417F4EA25B9D90A0054DDF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		842AC8A925B7284600957FDA /* UploadPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPresenter.swift; sourceTree = "<group>"; };
 		842C51CA254978A000886E42 /* CatAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842C51CD254978A000886E42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8417F4E925B9D8E00054DDF4 /* ProfilePresenter */ = {
+			isa = PBXGroup;
+			children = (
+				8417F4EA25B9D90A0054DDF4 /* ProfilePresenter.swift */,
+			);
+			path = ProfilePresenter;
+			sourceTree = "<group>";
+		};
 		842AC8A825B7280900957FDA /* UploadPresenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +208,7 @@
 				84F3735B259D1A6200BE451D /* APIPresenter */,
 				84FB87B925A496B400097466 /* MainPresenter */,
 				842AC8A825B7280900957FDA /* UploadPresenter */,
+				8417F4E925B9D8E00054DDF4 /* ProfilePresenter */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -311,6 +326,8 @@
 		84FB87B825A495BC00097466 /* ThirdTab */ = {
 			isa = PBXGroup;
 			children = (
+				8417F4E525B9D8CD0054DDF4 /* ProfileDelegateProtocol.swift */,
+				8417F4E125B9D87C0054DDF4 /* ProfileViewController.swift */,
 			);
 			path = ThirdTab;
 			sourceTree = "<group>";
@@ -431,6 +448,7 @@
 				84AAAD5E2554401400B67586 /* CatModel.swift in Sources */,
 				842C51CE254978A000886E42 /* AppDelegate.swift in Sources */,
 				84FB87C125A4981A00097466 /* MainTabBarController.swift in Sources */,
+				8417F4E225B9D87C0054DDF4 /* ProfileViewController.swift in Sources */,
 				84FB87D325A49DE700097466 /* UploadViewDelegateProtocol.swift in Sources */,
 				84FB87BB25A496FA00097466 /* MainPresenter.swift in Sources */,
 				84AAAD60255442C100B67586 /* JSONParser.swift in Sources */,
@@ -442,8 +460,10 @@
 				84780B21259A39A500275002 /* UserManager.swift in Sources */,
 				84CE26C325A700B3002425A6 /* CatCell.swift in Sources */,
 				84CC731F25A9F6FF000AB1D7 /* DetailViewController.swift in Sources */,
+				8417F4E625B9D8CD0054DDF4 /* ProfileDelegateProtocol.swift in Sources */,
 				84780B1C259A31DB00275002 /* RegistrationDelegateProtocol.swift in Sources */,
 				84F3735A259D1A0200BE451D /* APIDelegateProtocol.swift in Sources */,
+				8417F4EB25B9D90A0054DDF4 /* ProfilePresenter.swift in Sources */,
 				84F37360259D1B7700BE451D /* APIViewController.swift in Sources */,
 				84AAAD6225546CAD00B67586 /* NetworkManager.swift in Sources */,
 				84FB87CB25A49D0500097466 /* CatViewDelegateProtocol.swift in Sources */,
