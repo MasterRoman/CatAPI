@@ -59,7 +59,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         ])
         
         self.indicator!.isUserInteractionEnabled = false
-        //self.indicator!.startAnimating()
+        self.indicator!.startAnimating()
     }
     
     private func setUpCollectionView(){
@@ -97,14 +97,16 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     //MARK: Button selector
     
     @objc private func uploadButtonDidPress(){
-        
+        self.startIndicator()
         DispatchQueue.main.async {
-        let picker = UIImagePickerController.init()
-        picker.delegate = self.presenter
-        picker.allowsEditing = true
-        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        
-        self.present(picker, animated: true, completion: nil)
+            let picker = UIImagePickerController.init()
+            picker.delegate = self.presenter
+            picker.allowsEditing = true
+            picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+            
+            self.present(picker, animated: true, completion: {
+                self.stopIndicator()
+            })
         }
     }
     
