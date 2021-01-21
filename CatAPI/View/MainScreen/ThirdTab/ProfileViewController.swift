@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
         super.viewDidLoad()
 
         self.presenter = ProfilePresenter.init()
+        self.presenter!.setProfileViewDelegate(view: self)
         
         self.setUpView()
     }
@@ -40,7 +41,6 @@ class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
         self.passwordTextField.isUserInteractionEnabled = false
         self.apiKeyTextFField.isUserInteractionEnabled = false
         
-        
     }
 
     
@@ -55,6 +55,10 @@ class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
     }
     
     func checkUserStatus() {
+        let dict : Dictionary = self.presenter!.checkUserParameters()
+        self.loginTextField.text = dict["Login"] as? String
+        self.passwordTextField.text = dict["Password"] as? String
+        self.apiKeyTextFField.text = dict["ApiKey"] as? String
         
     }
     

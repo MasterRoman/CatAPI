@@ -86,13 +86,13 @@ class UserManager: NSObject {
         return nil
     }
     
-    func getUserInfo()->Dictionary<String,String>?{
+    func getUserInfo()->Dictionary<String,Any>?{
         if ((UserDefaults.standard.object(forKey: "Users")) != nil){
             let users : Array<Dictionary> = UserDefaults.standard.object(forKey: "Users") as! Array<Dictionary<String, Any>>
             for user in users{
                 let localStatus : Bool = user["IsActive"] as! Bool
                 if (localStatus){
-                    return user as? Dictionary
+                    return user 
                 }
             }
         }
