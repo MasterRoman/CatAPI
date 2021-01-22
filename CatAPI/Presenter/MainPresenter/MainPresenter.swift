@@ -74,18 +74,20 @@ class MainPresenter: NSObject {
     }
     
     func downloadDetailImage(for url: String){
-        self.networkManeger!.getChachedImage(for: url, completion: { [weak self] result in
+        DispatchQueue.global(qos: .utility).async {[weak self] in
             guard let self = self else {return}
-            DispatchQueue.main.async {
-                switch result{
-                case .success(let image):
-                    self.detailDelegate!.imageView!.image = image
-                    self.detailDelegate!.catCell!.catImageView.image = image
-                case .failure( _): break
+            self.networkManeger!.getChachedImage(for: url, completion: {  result in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let image):
+                        self.detailDelegate!.imageView!.image = image
+                        self.detailDelegate!.catCell!.catImageView.image = image
+                    case .failure( _): break
+                    }
                 }
-            }
-            
-        })
+                
+            })
+        }
     }
     
     func cancelDownloadingImage(for indexPath:IndexPath){
@@ -107,14 +109,19 @@ class MainPresenter: NSObject {
     }
     
     func pushDetailVC(indexPath : IndexPath){
-        let catCell : CatCell = self.catDelegate!.collectionView.cellForItem(at: indexPath)! as! CatCell
-        let detailVC = DetailViewController.init(with: catCell)
-        detailVC.presenter = self
-        self.catDelegate!.presentDetailViewController(controller:detailVC)
+        DispatchQueue.main.async {
+            let catCell : CatCell = self.catDelegate!.collectionView.cellForItem(at: indexPath)! as! CatCell
+            let detailVC = DetailViewController.init(with: catCell)
+            detailVC.presenter = self
+            self.catDelegate!.presentDetailViewController(controller:detailVC)
+        }
     }
     
     func saveToGallery(image : UIImage){
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        DispatchQueue.global(qos: .utility).async {
+            
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
         
     }
     
