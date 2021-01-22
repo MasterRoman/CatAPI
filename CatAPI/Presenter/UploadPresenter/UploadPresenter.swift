@@ -39,23 +39,25 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     //MARK: Downloading methods
     
     func downloadCats(){
-        let apiKey = self.getApi()
-        let url : String = "https://api.thecatapi.com/v1/images?limit=100"
-        //download cats by means of API
-        self.networkManeger!.loadUplodedCats(for: url, apiKey: apiKey, completion: { [weak self] result in
+        DispatchQueue.global(qos: .utility).async { [weak self] in
             guard let self = self else {return}
-           
+            let apiKey = self.getApi()
+            let url : String = "https://api.thecatapi.com/v1/images?limit=100"
+            //download cats by means of API
+            self.networkManeger!.loadUplodedCats(for: url, apiKey: apiKey, completion: { [weak self] result in
+                guard let self = self else {return}
+                
                 switch result{
                 case .success(let array):
                     self.catsArray!.append(contentsOf: array)
                     self.uploadDelegate!.showCats(array: self.catsArray!)
                 //MARK: TODO: Make failure branch
-              
+                
                 case .failure(_): break
-             
+                    
                 }
-        })
-        
+            })
+        }
     }
     
     func uploadImages(image : UIImage,url : String){
@@ -80,20 +82,22 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     }
     
     func dowloadImage(for cell : CatCell,indexPath : IndexPath){
-        cell.catImageUrl = self.catsArray![indexPath.row].url
-        self.networkManeger?.getChachedImage(for: self.catsArray![indexPath.row].url, completion: { [weak self] result in
+        DispatchQueue.global(qos: .utility).async { [weak self] in
             guard let self = self else {return}
-            DispatchQueue.main.async {
-                switch result{
-                case .success(let image):
-                    cell.catImageView.image = image
-                //MARK: TODO: Make failure branch
-                case .failure(_): break
-                // self.catDelegate!.showAlertController(error: error)
+            cell.catImageUrl = self.catsArray![indexPath.row].url
+            self.networkManeger?.getChachedImage(for: self.catsArray![indexPath.row].url, completion: { result in
+                
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let image):
+                        cell.catImageView.image = image
+                    //MARK: TODO: Make failure branch
+                    case .failure(_): break
+                    // self.catDelegate!.showAlertController(error: error)
+                    }
                 }
-            }
-        })
-        
+            })
+        }
     }
     
     private func getApi()->String{
@@ -118,19 +122,22 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     //MARK: Picker Delegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        let chosenImage : UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
-        let fileNameUrl = info[UIImagePickerController.InfoKey.imageURL]
-        let fileName  : String = String.init(format: "%@", fileNameUrl as! CVarArg)
-        self.uploadImages(image: chosenImage, url: fileName)
-        
-        let cat = CatModel.init(with: fileName)
-        self.catsArray!.append(cat)
-        self.uploadDelegate!.showCats(array: self.catsArray!)
-    
-        picker.dismiss(animated: true, completion: nil)
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            guard let self = self else {return}
+            let chosenImage : UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+            let fileNameUrl = info[UIImagePickerController.InfoKey.imageURL]
+            let fileName  : String = String.init(format: "%@", fileNameUrl as! CVarArg)
+            self.uploadImages(image: chosenImage, url: fileName)
+            
+            let cat = CatModel.init(with: fileName)
+            self.catsArray!.append(cat)
+            self.uploadDelegate!.showCats(array: self.catsArray!)
+            DispatchQueue.main.async {
+                picker.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
-
+    
     
 }
