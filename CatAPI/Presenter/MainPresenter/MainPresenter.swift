@@ -74,24 +74,22 @@ class MainPresenter: NSObject {
     }
     
     func downloadDetailImage(for url: String){
-        DispatchQueue.global(qos: .utility).async {[weak self] in
+        self.networkManeger!.getChachedImage(for: url, completion: { [weak self] result in
             guard let self = self else {return}
-            self.networkManeger!.getChachedImage(for: url, completion: {  result in
-                DispatchQueue.main.async {
-                    switch result{
-                    case .success(let image):
-                        self.detailDelegate!.imageView!.image = image
-                        self.detailDelegate!.catCell!.catImageView.image = image
-                    case .failure( _): break
-                    }
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let image):
+                    self.detailDelegate!.imageView!.image = image
+                    self.detailDelegate!.catCell!.catImageView.image = image
+                case .failure( _): break
                 }
-                
-            })
-        }
+            }
+            
+        })
     }
     
     func cancelDownloadingImage(for indexPath:IndexPath){
-        self.networkManeger?.cancelDownloadingForUrl(url:(self.catsArray?[indexPath.row].url)!)
+        self.networkManeger!.cancelDownloadingForUrl(url:(self.catsArray?[indexPath.row].url)!)
     }
     
     
@@ -109,7 +107,7 @@ class MainPresenter: NSObject {
     }
     
     func pushDetailVC(indexPath : IndexPath){
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {  [weak self] in
             guard let self = self else {return}
             let catCell : CatCell = self.catDelegate!.collectionView.cellForItem(at: indexPath)! as! CatCell
             let detailVC = DetailViewController.init(with: catCell)
