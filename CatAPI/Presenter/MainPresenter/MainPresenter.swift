@@ -109,7 +109,8 @@ class MainPresenter: NSObject {
     }
     
     func pushDetailVC(indexPath : IndexPath){
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
             let catCell : CatCell = self.catDelegate!.collectionView.cellForItem(at: indexPath)! as! CatCell
             let detailVC = DetailViewController.init(with: catCell)
             detailVC.presenter = self
