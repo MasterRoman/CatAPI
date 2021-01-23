@@ -69,6 +69,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         self.navigationItem.rightBarButtonItem = uploadButton
         
         self.navigationItem.leftBarButtonItem = editButtonItem
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
         
         self.layout = UICollectionViewFlowLayout.init()
         self.layout.scrollDirection = .vertical
@@ -116,7 +117,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        
+
         self.collectionView.allowsMultipleSelection = editing
         let indexPaths = collectionView.indexPathsForVisibleItems
         for indexPath in indexPaths {
@@ -164,6 +165,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         DispatchQueue.main.async {
             self.indicator!.stopAnimating()
             self.collectionView.reloadData()
+            self.navigationItem.leftBarButtonItem?.isEnabled = true
         }
     }
     
