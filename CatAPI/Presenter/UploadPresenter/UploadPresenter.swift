@@ -136,6 +136,12 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
+    func deleteUplodedImage(with imageId:String){
+        let apiKey = self.userManeger!.checkUserAPI()
+        self.networkManeger!.deleteUplodedImageFromServer(for: apiKey!, imageId: imageId, completion: { result in
+            
+        })
+    }
     
     
 }

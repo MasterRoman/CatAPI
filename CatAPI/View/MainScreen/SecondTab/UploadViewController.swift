@@ -108,10 +108,15 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         for index in indexes {
             let curCell = self.catsSource![index.row]
             self.catsSource?.remove(at: index.row)
-           
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                guard let self = self else {return}
+                self.presenter!.deleteUplodedImage(with: curCell.imageId)
+            }
         }
-        self.collectionView.deleteItems(at: indexes)
-        self.collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.deleteItems(at: indexes)
+            self.collectionView.reloadData()
+        }
     }
     
     @objc private func uploadButtonDidPress(){

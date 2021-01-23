@@ -153,6 +153,31 @@ class NetworkManager: NSObject {
         
     }
     
+    func deleteUplodedImageFromServer(for apiKey : String,imageId : String, completion:@escaping (Result<String,Error>)->()){
+        
+        var url : String = "https://api.thecatapi.com/v1/images/"
+        url.append(imageId)
+        let localUrl = URL(string: url)
+        
+        var  request = URLRequest.init(url: localUrl!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        
+        let headers : Dictionary = ["x-api-key" : apiKey]
+        
+        request.allHTTPHeaderFields = headers
+        request.httpMethod = "DELETE"
+        
+        let dataTask = self.session.dataTask(with: request, completionHandler: {
+            (data, response, error) in
+            if (error != nil){
+                completion(.failure(error!))
+                return
+            }
+            
+        })
+        
+        dataTask.resume()
+        
+    }
     
     
 }
