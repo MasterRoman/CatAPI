@@ -82,22 +82,20 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     }
     
     func dowloadImage(for cell : CatCell,indexPath : IndexPath){
-        DispatchQueue.global(qos: .utility).async { [weak self] in
+        cell.catImageUrl = self.catsArray![indexPath.row].url
+        self.networkManeger?.getChachedImage(for: self.catsArray![indexPath.row].url, completion: {  [weak self] result  in
             guard let self = self else {return}
-            cell.catImageUrl = self.catsArray![indexPath.row].url
-            self.networkManeger?.getChachedImage(for: self.catsArray![indexPath.row].url, completion: { result in
-                
-                DispatchQueue.main.async {
-                    switch result{
-                    case .success(let image):
-                        cell.catImageView.image = image
-                    //MARK: TODO: Make failure branch
-                    case .failure(_): break
-                    // self.catDelegate!.showAlertController(error: error)
-                    }
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let image):
+                    cell.catImageView.image = image
+                //MARK: TODO: Make failure branch
+                case .failure(_): break
+                // self.catDelegate!.showAlertController(error: error)
                 }
-            })
-        }
+            }
+        })
+        
     }
     
     private func getApi()->String{

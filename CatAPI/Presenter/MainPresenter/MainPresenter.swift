@@ -89,7 +89,7 @@ class MainPresenter: NSObject {
     }
     
     func cancelDownloadingImage(for indexPath:IndexPath){
-        self.networkManeger!.cancelDownloadingForUrl(url:(self.catsArray?[indexPath.row].url)!)
+        self.networkManeger?.cancelDownloadingForUrl(url:(self.catsArray?[indexPath.row].url)!)
     }
     
     

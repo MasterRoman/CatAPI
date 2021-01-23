@@ -167,7 +167,7 @@ class CatViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-            self.presenter!.cancelDownloadingImage(for: indexPath)
+            self.presenter?.cancelDownloadingImage(for: indexPath)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
