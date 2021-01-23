@@ -118,6 +118,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
             self.collectionView.deleteItems(at: items)
             self.collectionView.reloadData()
         }
+        self.presenter!.catsArray = self.catsSource
     }
     
     @objc private func uploadButtonDidPress(){

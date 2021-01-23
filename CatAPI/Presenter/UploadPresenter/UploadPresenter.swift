@@ -17,7 +17,7 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     private var userManeger : UserManager?
     
     private var parser : JSONParser?
-    private var catsArray : Array<CatModel>?
+    var catsArray : Array<CatModel>?
     
     override init() {
         self.parser = JSONParser.init()
