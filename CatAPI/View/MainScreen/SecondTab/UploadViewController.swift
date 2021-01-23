@@ -102,19 +102,20 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     //MARK: Button selector
     
     @objc private func deleteButtonDidPress(){
-        guard let indexes = self.collectionView.indexPathsForSelectedItems else {
+        guard let items = self.collectionView.indexPathsForSelectedItems else {
             return
         }
+        let indexes = items.map{$0.item}.sorted().reversed()
         for index in indexes {
-            let curCell = self.catsSource![index.row]
-            self.catsSource?.remove(at: index.row)
+            let curCell = self.catsSource![index]
+            self.catsSource!.remove(at: index)
             DispatchQueue.global(qos: .background).async { [weak self] in
                 guard let self = self else {return}
                 self.presenter!.deleteUplodedImage(with: curCell.imageId)
             }
         }
         DispatchQueue.main.async {
-            self.collectionView.deleteItems(at: indexes)
+            self.collectionView.deleteItems(at: items)
             self.collectionView.reloadData()
         }
     }
