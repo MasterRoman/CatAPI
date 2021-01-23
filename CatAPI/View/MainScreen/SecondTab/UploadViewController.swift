@@ -68,6 +68,8 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         self.navigationItem.rightBarButtonItem = uploadButton
         
+        self.navigationItem.leftBarButtonItem = editButtonItem
+        
         self.layout = UICollectionViewFlowLayout.init()
         self.layout.scrollDirection = .vertical
         self.layout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 0, right: 10)
@@ -110,7 +112,19 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
     }
     
-    //MARK: Collection view dataSorce methods 
+    //MARK: Collection view dataSorce methods
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        self.collectionView.allowsMultipleSelection = editing
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        for indexPath in indexPaths {
+            let cell = collectionView.cellForItem(at: indexPath) as! CatCell
+            cell.isInEditingMode = editing
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return catsSource!.count

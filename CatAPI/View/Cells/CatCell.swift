@@ -12,6 +12,22 @@ class CatCell: UICollectionViewCell {
     
     var catImageUrl : String!
     var catImageView : UIImageView!
+    var checkmarkLabel : UILabel!
+    
+    var isInEditingMode: Bool = false {
+        didSet {
+            checkmarkLabel.isHidden = !isInEditingMode
+        }
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isInEditingMode {
+                checkmarkLabel.text = isSelected ? "●" : ""
+            }
+        }
+    }
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +53,23 @@ class CatCell: UICollectionViewCell {
             self.catImageView.trailingAnchor.constraint(equalTo:self.safeAreaLayoutGuide.trailingAnchor),
             self.catImageView.bottomAnchor.constraint(equalTo:self.safeAreaLayoutGuide.bottomAnchor),
         ])
+        
+        self.checkmarkLabel = UILabel.init(frame: CGRect.zero)
+        
+        self.catImageView.addSubview(self.checkmarkLabel)
+        
+        self.checkmarkLabel.font = UIFont.init(name: "System", size: 10.0)
+     
+        
+        self.checkmarkLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.checkmarkLabel.topAnchor.constraint(equalTo:self.catImageView.topAnchor,constant: 5),
+            self.checkmarkLabel.trailingAnchor.constraint(equalTo:self.catImageView.trailingAnchor,constant: -5),
+            self.catImageView.heightAnchor.constraint(equalToConstant: 10.0),
+            self.catImageView.widthAnchor.constraint(equalToConstant: 10.0),
+        ])
+        
         
     }
 }

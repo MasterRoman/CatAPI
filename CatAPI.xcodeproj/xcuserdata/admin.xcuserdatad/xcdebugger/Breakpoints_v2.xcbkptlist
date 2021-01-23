@@ -3,22 +3,4 @@
    uuid = "DECFF887-5FCC-49B6-A839-9B0098C2B402"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E262DC78-14AA-4587-AFA4-8DFFE9E25FE8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CatAPI/Services/NetworkManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "NetworkManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>
