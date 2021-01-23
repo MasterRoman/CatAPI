@@ -52,7 +52,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
         self.collectionView.addSubview(self.indicator!)
         self.indicator!.color = UIColor.white
-        self.indicator!.frame = CGRect.init(x: 0, y: 0, width: 50, height: 50)
+        self.indicator!.frame = CGRect.init(x: 0, y: 0, width: 60, height: 60)
         
         self.indicator!.translatesAutoresizingMaskIntoConstraints = false
         
@@ -102,7 +102,16 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     //MARK: Button selector
     
     @objc private func deleteButtonDidPress(){
-        
+        guard let indexes = self.collectionView.indexPathsForSelectedItems else {
+            return
+        }
+        for index in indexes {
+            let curCell = self.catsSource![index.row]
+            self.catsSource?.remove(at: index.row)
+           
+        }
+        self.collectionView.deleteItems(at: indexes)
+        self.collectionView.reloadData()
     }
     
     @objc private func uploadButtonDidPress(){
