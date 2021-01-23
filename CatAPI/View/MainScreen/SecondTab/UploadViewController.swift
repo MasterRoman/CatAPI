@@ -19,6 +19,9 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     private var indicator : UIActivityIndicatorView?
     
+    private var deleteButton : UIBarButtonItem?
+    private var uploadButton : UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,9 +67,8 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     private func setUpCollectionView(){
         
-        let uploadButton = UIBarButtonItem.init(image: UIImage.init(named: "upload_selected"), style: .plain, target: self, action: #selector(self.uploadButtonDidPress))
-        
-        self.navigationItem.rightBarButtonItem = uploadButton
+        self.uploadButton = UIBarButtonItem.init(image: UIImage.init(systemName: "plus")!, style: .plain, target: self, action: #selector(self.uploadButtonDidPress))
+        self.deleteButton = UIBarButtonItem.init(image: UIImage.init(systemName: "trash")!, style: .plain, target: self, action: #selector(self.deleteButtonDidPress))
         
         self.navigationItem.leftBarButtonItem = editButtonItem
         self.navigationItem.leftBarButtonItem?.isEnabled = false
@@ -93,11 +95,15 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
             self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
         ])
-        
+       
     }
   
     
     //MARK: Button selector
+    
+    @objc private func deleteButtonDidPress(){
+        
+    }
     
     @objc private func uploadButtonDidPress(){
         self.startIndicator()
@@ -118,6 +124,13 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
 
+        if (!editing){
+            self.navigationItem.rightBarButtonItems = nil
+        }
+        else
+        {
+            self.navigationItem.setRightBarButtonItems([self.uploadButton!,self.deleteButton!], animated: true)
+        }
         self.collectionView.allowsMultipleSelection = editing
         let indexPaths = collectionView.indexPathsForVisibleItems
         for indexPath in indexPaths {
