@@ -200,12 +200,14 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     func addMoreImages(array: Array<CatModel>) {
-            
+        
     }
     
     func checkUserRegistration() {
-        self.presenter!.downloadCats()
-       // self.startIndicator()
+        if (self.catsSource?.count == 0){
+            self.presenter!.downloadCats()
+            // self.startIndicator()
+        }
         
     }
     
