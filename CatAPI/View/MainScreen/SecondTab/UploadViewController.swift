@@ -138,6 +138,19 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     //MARK: Collection view dataSorce methods
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return catsSource!.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
+        //configure with image
+        self.presenter.dowloadImage(for: cell, indexPath: indexPath)
+        return cell
+    }
+    
+    //MARK: CollectionView Delegate methods
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
 
@@ -155,21 +168,6 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
             cell.isInEditingMode = editing
         }
     }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return catsSource!.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
-        //configure with image
-        self.presenter.dowloadImage(for: cell, indexPath: indexPath)
-        return cell
-    }
-    
-    //MARK: CollectionView Delegate methods
-    
    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
