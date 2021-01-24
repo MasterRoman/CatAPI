@@ -62,7 +62,7 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     
     func uploadImages(image : UIImage,url : String){
         //upload images to server
-        let queue = DispatchQueue.global(qos: .utility)
+        let queue = DispatchQueue.global(qos: .background)
         queue.async { [weak self] in
             guard let self = self else {return}
             let apiKey = self.getApi()
