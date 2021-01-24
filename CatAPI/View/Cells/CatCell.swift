@@ -23,7 +23,7 @@ class CatCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isInEditingMode {
-                checkmarkLabel.text = isSelected ? "●" : ""
+                checkmarkLabel.text = isSelected ? "✓" : ""
             }
         }
     }
@@ -54,20 +54,24 @@ class CatCell: UICollectionViewCell {
             self.catImageView.bottomAnchor.constraint(equalTo:self.safeAreaLayoutGuide.bottomAnchor),
         ])
         
-        self.checkmarkLabel = UILabel.init(frame: CGRect.zero)
+        self.checkmarkLabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: 30, height: 30))
+        self.checkmarkLabel.font = UIFont.systemFont(ofSize:35.0, weight: .bold)
+        self.checkmarkLabel.textColor = UIColor.red
+        self.checkmarkLabel.numberOfLines = 0
+        self.checkmarkLabel.contentMode = .scaleToFill
+    
+        
         
         self.catImageView.addSubview(self.checkmarkLabel)
         
-        self.checkmarkLabel.font = UIFont.init(name: "System", size: 10.0)
-     
         
         self.checkmarkLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.checkmarkLabel.topAnchor.constraint(equalTo:self.catImageView.topAnchor,constant: 5),
-            self.checkmarkLabel.trailingAnchor.constraint(equalTo:self.catImageView.trailingAnchor,constant: -5),
-            self.checkmarkLabel.heightAnchor.constraint(equalToConstant: 10.0),
-            self.checkmarkLabel.widthAnchor.constraint(equalToConstant: 10.0),
+            self.checkmarkLabel.bottomAnchor.constraint(equalTo:self.catImageView.bottomAnchor,constant: -10),
+            self.checkmarkLabel.trailingAnchor.constraint(equalTo:self.catImageView.trailingAnchor,constant: -10),
+            self.checkmarkLabel.heightAnchor.constraint(equalToConstant: 30.0),
+            self.checkmarkLabel.widthAnchor.constraint(equalToConstant: 30.0),
         ])
         
         
