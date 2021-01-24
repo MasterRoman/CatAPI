@@ -55,18 +55,25 @@ class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
         let okAction = UIAlertAction.init(title: "OK", style: .default, handler: { [weak self] action in
             guard let self = self else {return}
             self.navigationController!.popToRootViewController(animated: true)
+            self.view.layer.sublayers?.removeLast()
         })
         
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .default, handler: { [weak self] action in
             guard let self = self else {return}
             self.tabBarController!.selectedIndex = 0
+            self.view.layer.sublayers?.removeLast()
         })
         
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         
-     
-        self.present(alert, animated: true, completion: nil)
+        let layer = CALayer.init()
+        layer.frame = UIScreen.main.bounds
+        layer.backgroundColor = UIColor.black.cgColor
+        layer.opacity = 0.8
+        
+        self.view.layer.addSublayer(layer)
+        self.present(alert, animated: true, completion:nil)
         
     }
     
