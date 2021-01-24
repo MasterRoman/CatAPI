@@ -51,6 +51,22 @@ class ProfileViewController: UIViewController,ProfileViewDelegateProtocol {
     // MARK: - Delegate methods
     
     func showAlertController() {
+        let alert = UIAlertController.init(title: "Not registered!", message: "To get access full functional please register!", preferredStyle: .alert)
+        let okAction = UIAlertAction.init(title: "OK", style: .default, handler: { [weak self] action in
+            guard let self = self else {return}
+            self.navigationController!.popToRootViewController(animated: true)
+        })
+        
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .default, handler: { [weak self] action in
+            guard let self = self else {return}
+            self.tabBarController!.selectedIndex = 0
+        })
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+     
+        self.present(alert, animated: true, completion: nil)
         
     }
     
