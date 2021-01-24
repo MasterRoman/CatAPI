@@ -146,6 +146,9 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
         //configure with image
         self.presenter.dowloadImage(for: cell, indexPath: indexPath)
+        if (self.navigationItem.rightBarButtonItems != nil){
+            cell.isInEditingMode = true
+        }
         return cell
     }
     
@@ -167,15 +170,6 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
             let cell = collectionView.cellForItem(at: indexPath) as! CatCell
             cell.isInEditingMode = editing
         }
-    }
-   
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //when new element is added it isn't in editingMode 
-        if (self.navigationItem.rightBarButtonItems != nil){
-            (self.collectionView.cellForItem(at: indexPath) as! CatCell).isInEditingMode = true
-            (self.collectionView.cellForItem(at: indexPath) as! CatCell).isSelected = true
-        }
-        ////////////////////////
     }
     
     
