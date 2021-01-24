@@ -34,11 +34,12 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         self.presenter.setUploadViewDelegate(view: self)
         
-        self.presenter.checkUserRegistration()
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.presenter.checkUserRegistration()
        
     }
     
@@ -209,10 +210,11 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     func showAlertController() {
+        self.indicator!.stopAnimating()
         let alert = UIAlertController.init(title: "Not registered!", message: "To get access full functional please register!", preferredStyle: .alert)
         let okAction = UIAlertAction.init(title: "OK", style: .default, handler: { [weak self] action in
             guard let self = self else {return}
-            self.navigationController!.popToRootViewController(animated: true)
+            self.tabBarController!.selectedIndex = 2
         })
         
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .default, handler: { [weak self] action in
