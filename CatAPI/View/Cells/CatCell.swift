@@ -66,8 +66,8 @@ class CatCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             self.checkmarkLabel.topAnchor.constraint(equalTo:self.catImageView.topAnchor,constant: 5),
             self.checkmarkLabel.trailingAnchor.constraint(equalTo:self.catImageView.trailingAnchor,constant: -5),
-            self.catImageView.heightAnchor.constraint(equalToConstant: 10.0),
-            self.catImageView.widthAnchor.constraint(equalToConstant: 10.0),
+            self.checkmarkLabel.heightAnchor.constraint(equalToConstant: 10.0),
+            self.checkmarkLabel.widthAnchor.constraint(equalToConstant: 10.0),
         ])
         
         
