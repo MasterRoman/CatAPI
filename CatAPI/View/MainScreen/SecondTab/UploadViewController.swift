@@ -169,6 +169,15 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
     }
    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //when new element is added it isn't in editingMode 
+        if (self.navigationItem.rightBarButtonItems != nil){
+            (self.collectionView.cellForItem(at: indexPath) as! CatCell).isInEditingMode = true
+            (self.collectionView.cellForItem(at: indexPath) as! CatCell).isSelected = true
+        }
+        ////////////////////////
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
