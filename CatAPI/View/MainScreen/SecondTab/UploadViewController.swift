@@ -22,6 +22,9 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     private var deleteButton : UIBarButtonItem?
     private var uploadButton : UIBarButtonItem?
     
+    private var selectedCell : CatCell? = nil
+    private var isEnded : Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +37,8 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         self.presenter.setUploadViewDelegate(view: self)
         
+        self.setUpGestureRecognizer()
+        
       
     }
     
@@ -41,6 +46,11 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         super.viewWillAppear(animated)
         self.presenter.checkUserRegistration()
        
+    }
+    
+    private func setUpGestureRecognizer(){
+        let pressGR = UILongPressGestureRecognizer.init(target: self, action: #selector(self.handleGesture(gesture:)))
+        self.collectionView.addGestureRecognizer(pressGR)
     }
     
     private func setUpActivityIndicator(){
@@ -102,6 +112,32 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     //MARK: Button selector
     
+    @objc private func handleGesture(gesture: UILongPressGestureRecognizer){
+        switch gesture.state {
+        
+        case .began:
+            guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+                break
+            }
+            self.isEnded = false
+            self.selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as? CatCell
+            self.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case .changed:
+            self.collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case .ended:
+            self.isEnded = true
+            collectionView.performBatchUpdates({
+                self.collectionView.endInteractiveMovement()
+            }, completion: { result in
+                self.selectedCell = nil
+            })
+        default:
+            self.isEnded = true
+            self.collectionView.cancelInteractiveMovement()
+        }
+        
+    }
+    
     @objc private func deleteButtonDidPress(){
         guard let items = self.collectionView.indexPathsForSelectedItems else {
             return
@@ -143,13 +179,19 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
-        //configure with image
-        self.presenter.dowloadImage(for: cell, indexPath: indexPath)
-        if (self.navigationItem.rightBarButtonItems != nil){
-            cell.isInEditingMode = true
+        if ((self.isEnded) && (self.selectedCell != nil)){
+            
+            return self.selectedCell!
+        } else {
+            let cell : CatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! CatCell
+            //configure with image
+            self.presenter.dowloadImage(for: cell, indexPath: indexPath)
+            if (self.navigationItem.rightBarButtonItems != nil){
+                cell.isInEditingMode = true
+            }
+            
+            return cell
         }
-        return cell
     }
     
     //MARK: CollectionView Delegate methods
@@ -179,6 +221,17 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         let width = (self.collectionView.frame.size.width - 40 - 2 * 5) / 3.0
 
         return CGSize(width: width,height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedItem = self.catsSource![sourceIndexPath.item]
+        self.catsSource!.remove(at: sourceIndexPath.item)
+        self.catsSource!.insert(movedItem, at: destinationIndexPath.item)
+        
     }
     
     //MARK: FLow layout Delegate
