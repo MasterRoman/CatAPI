@@ -114,29 +114,30 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     //MARK: Button selector
     
     @objc private func handleGesture(gesture: UILongPressGestureRecognizer){
-        switch gesture.state {
-        
-        case .began:
-            guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
-                break
+        if (self.navigationItem.rightBarButtonItems != nil){  //if editing mode is on
+            switch gesture.state {
+            
+            case .began:
+                guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+                    break
+                }
+                self.isEnded = false
+                self.selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as? CatCell
+                self.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+            case .changed:
+                self.collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+            case .ended:
+                self.isEnded = true
+                collectionView.performBatchUpdates({
+                    self.collectionView.endInteractiveMovement()
+                }, completion: { result in
+                    self.selectedCell = nil
+                })
+            default:
+                self.isEnded = true
+                self.collectionView.cancelInteractiveMovement()
             }
-            self.isEnded = false
-            self.selectedCell = self.collectionView.cellForItem(at: selectedIndexPath) as? CatCell
-            self.collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-        case .changed:
-            self.collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-        case .ended:
-            self.isEnded = true
-            collectionView.performBatchUpdates({
-                self.collectionView.endInteractiveMovement()
-            }, completion: { result in
-                self.selectedCell = nil
-            })
-        default:
-            self.isEnded = true
-            self.collectionView.cancelInteractiveMovement()
         }
-        
     }
     
     @objc private func deleteButtonDidPress(){
