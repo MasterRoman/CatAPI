@@ -50,6 +50,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     private func setUpGestureRecognizer(){
         let pressGR = UILongPressGestureRecognizer.init(target: self, action: #selector(self.handleGesture(gesture:)))
+        pressGR.minimumPressDuration = 0
         self.collectionView.addGestureRecognizer(pressGR)
     }
     
