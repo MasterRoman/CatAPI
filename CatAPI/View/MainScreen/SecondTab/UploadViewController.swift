@@ -155,7 +155,6 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
         DispatchQueue.main.async {
             self.collectionView.deleteItems(at: items)
-            self.collectionView.reloadData()
         }
         self.presenter!.catsArray = self.catsSource
     }
