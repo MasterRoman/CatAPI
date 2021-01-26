@@ -60,18 +60,19 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    func uploadImages(image : UIImage,url : String){
+    func uploadImages(image : UIImage,url : String,completion : @escaping (Result<String,Error>) -> ()){
         //upload images to server
         let queue = DispatchQueue.global(qos: .background)
         queue.async { [weak self] in
             guard let self = self else {return}
             let apiKey = self.getApi()
             self.networkManeger!.uploadImage(for: apiKey, fileName: url, image: image, completion: { result in
-
+                
                 switch result{
-                case .success(_):
-                    break
-                //MARK: TODO: Make success and failure branch
+                case .success(let dict):
+                    completion(.success(dict["id"] as! String))
+                    
+                //MARK: TODO:  make failure branch
                 
                 case .failure(_): break
                 //show ALERT
@@ -125,10 +126,17 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
             let chosenImage : UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
             let fileNameUrl = info[UIImagePickerController.InfoKey.imageURL]
             let fileName  : String = String.init(format: "%@", fileNameUrl as! CVarArg)
-            self.uploadImages(image: chosenImage, url: fileName)
-            
             let cat = CatModel.init(with: fileName)
             self.catsArray!.append(cat)
+            self.uploadImages(image: chosenImage, url: fileName, completion: { result in
+                switch result{
+                case .success(let id):
+                    cat.imageId = id
+                //MARK: TODO: Make failure branch
+                case .failure(_): break
+                }
+            })
+            
             self.uploadDelegate!.showCats(array: self.catsArray!)
             DispatchQueue.main.async {
                 picker.dismiss(animated: true, completion: nil)
