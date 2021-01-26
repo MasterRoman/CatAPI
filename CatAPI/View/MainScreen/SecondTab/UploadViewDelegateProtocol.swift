@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol UploadViewDelegateProtocol {
+    
+    var collectionView : UICollectionView! { get set}
     
     func showCats(array : Array<CatModel>)
     func addMoreImages(array : Array<CatModel>)

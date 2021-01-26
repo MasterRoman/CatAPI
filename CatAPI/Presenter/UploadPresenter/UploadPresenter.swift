@@ -60,7 +60,23 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    func uploadImages(image : UIImage,url : String,completion : @escaping (Result<String,Error>) -> ()){
+    enum StringError : Error {
+        
+        case blockedImage
+        
+        var errorDiscription : String?{
+            switch self {
+            case .blockedImage:
+                return "blockedImage"
+            default:
+                return "notFound"
+            }
+            
+        }
+        
+    }
+    
+    func uploadImages(image : UIImage,url : String,completion : @escaping (Result<String,StringError>) -> ()){
         //upload images to server
         let queue = DispatchQueue.global(qos: .background)
         queue.async { [weak self] in
@@ -70,7 +86,11 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
                 
                 switch result{
                 case .success(let dict):
-                    completion(.success(dict["id"] as! String))
+                    guard let id : String = dict["id"] as? String else {
+                        completion(.failure(.blockedImage))
+                        return
+                    }
+                    completion(.success(id))
                     
                 //MARK: TODO:  make failure branch
                 
@@ -83,19 +103,27 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     }
     
     func dowloadImage(for cell : CatCell,indexPath : IndexPath){
-        cell.catImageUrl = self.catsArray![indexPath.row].url
-        self.networkManeger?.getChachedImage(for: self.catsArray![indexPath.row].url, completion: {  [weak self] result  in
-            guard let self = self else {return}
-            DispatchQueue.main.async {
-                switch result{
-                case .success(let image):
-                    cell.catImageView.image = image
-                //MARK: TODO: Make failure branch
-                case .failure(_): break
-                // self.catDelegate!.showAlertController(error: error)
+        if (self.catsArray![indexPath.row].url != "blockedImage"){
+            cell.catImageUrl = self.catsArray![indexPath.row].url
+            self.networkManeger?.getChachedImage(for: self.catsArray![indexPath.row].url, completion: {  [weak self] result  in
+                guard let self = self else {return}
+                DispatchQueue.main.async {
+                    switch result{
+                    case .success(let image):
+                        cell.catImageView.image = image
+                    //MARK: TODO: Make failure branch
+                    case .failure(_): break
+                    // self.catDelegate!.showAlertController(error: error)
+                    }
                 }
-            }
-        })
+            })
+        } else {
+            cell.catImageView.image = UIImage.init(named: "blockedImage")
+            DispatchQueue.main.asyncAfter(deadline: .now()+2.0, execute: {
+                self.catsArray!.remove(at: indexPath.row)
+                self.uploadDelegate!.showCats(array: self.catsArray!)
+            })
+        }
         
     }
     
@@ -126,14 +154,16 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
             let chosenImage : UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
             let fileNameUrl = info[UIImagePickerController.InfoKey.imageURL]
             let fileName  : String = String.init(format: "%@", fileNameUrl as! CVarArg)
-            let cat = CatModel.init(with: fileName)
+            let cat  = CatModel.init(with: fileName)
             self.catsArray!.append(cat)
             self.uploadImages(image: chosenImage, url: fileName, completion: { result in
                 switch result{
                 case .success(let id):
                     cat.imageId = id
                 //MARK: TODO: Make failure branch
-                case .failure(_): break
+                case .failure(let error):
+                    cat.url = error.errorDiscription!
+                    self.uploadDelegate!.showCats(array: self.catsArray!)
                 }
             })
             
