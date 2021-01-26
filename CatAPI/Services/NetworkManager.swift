@@ -106,7 +106,7 @@ class NetworkManager: NSObject {
         dataTask.resume()
     }
     
-    func uploadImage(for apiKey:String,fileName : String,image : UIImage,completion:@escaping (Result<Array<CatModel>,Error>)->()){
+    func uploadImage(for apiKey:String,fileName : String,image : UIImage,completion:@escaping (Result<Dictionary<String,Any>,Error>)->()){
         
         let boundary = "Boundary-\(NSUUID().uuidString)"
         let strContentType = "multipart/form-data; boundary=\(boundary)"
@@ -143,8 +143,13 @@ class NetworkManager: NSObject {
                 completion(.failure(error!))
                 return
             }
-            
            
+            do { //get dictionary for image id
+                guard let dict : Dictionary<String, Any> = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? Dictionary<String, Any> else {return}
+                completion(.success(dict))
+            } catch {
+                completion(.failure(error))
+            }
             
         })
         
