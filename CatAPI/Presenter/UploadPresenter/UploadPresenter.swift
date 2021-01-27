@@ -149,7 +149,8 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
     //MARK: Picker Delegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        DispatchQueue.global(qos: .utility).async { [weak self] in
+        let queue =  DispatchQueue.global(qos: .utility)
+       queue.async { [weak self] in
             guard let self = self else {return}
             let chosenImage : UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
             let fileNameUrl = info[UIImagePickerController.InfoKey.imageURL]
@@ -160,23 +161,26 @@ class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationCon
                 switch result{
                 case .success(let id):
                     cat.imageId = id
+                    NotificationCenter.default.post(name: .downlodingDidFinished, object: cat)
                 //MARK: TODO: Make failure branch
                 case .failure(let error):
                     cat.url = error.errorDiscription!
                     self.uploadDelegate!.showCats(array: self.catsArray!)
                 }
             })
-            
-            self.uploadDelegate!.showCats(array: self.catsArray!)
-            DispatchQueue.main.async {
-                picker.dismiss(animated: true, completion: nil)
-            }
+        
+        self.uploadDelegate!.showCats(array: self.catsArray!)
+        
+        
+        DispatchQueue.main.async {
+            picker.dismiss(animated: true, completion: nil)
         }
+       }
     }
     
-    func deleteUplodedImage(with imageId:String){
+    func deleteUplodedImage(with cat:CatModel){
         let apiKey = self.userManeger!.checkUserAPI()
-        self.networkManeger!.deleteUplodedImageFromServer(for: apiKey!, imageId: imageId, completion: { result in
+        self.networkManeger!.deleteUplodedImageFromServer(for: apiKey!, imageId: cat.imageId, completion: { result in
             
         })
     }
