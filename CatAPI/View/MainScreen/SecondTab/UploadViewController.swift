@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension Notification.Name{
+    static let downlodingDidFinished = Notification.Name("downlodingDidFinished")
+}
+
 class UploadViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UploadViewDelegateProtocol {
 
     var collectionView: UICollectionView!
@@ -140,6 +144,7 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
     }
     
+   
     @objc private func deleteButtonDidPress(){
         guard let items = self.collectionView.indexPathsForSelectedItems else {
             return
@@ -150,13 +155,27 @@ class UploadViewController: UIViewController,UICollectionViewDelegate,UICollecti
             self.catsSource!.remove(at: index)
             DispatchQueue.global(qos: .background).async { [weak self] in
                 guard let self = self else {return}
-                self.presenter!.deleteUplodedImage(with: curCell.imageId)
+                if (curCell.imageId == ""){
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.deleteAfterLoading(notification:)), name: Notification.Name.downlodingDidFinished , object: curCell)
+                }
+                else
+                {
+                    self.presenter!.deleteUplodedImage(with: curCell)
+                }
             }
         }
         DispatchQueue.main.async {
             self.collectionView.deleteItems(at: items)
         }
         self.presenter!.catsArray = self.catsSource
+    }
+    
+    @objc private func deleteAfterLoading(notification : Notification){
+
+        self.presenter!.deleteUplodedImage(with: notification.object as! CatModel)
+        
+        NotificationCenter.default.removeObserver(self, name: .downlodingDidFinished, object: notification.object)
+        
     }
     
     @objc private func uploadButtonDidPress(){
