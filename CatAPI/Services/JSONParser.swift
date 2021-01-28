@@ -39,7 +39,7 @@ class JSONParser: NSObject {
         var cats : Array<CatModel> = []
         if let dict = rootDictionary{
             for item in dict{
-                cats.append(CatModel.init(withDictionary: item))
+                cats.append(CatModel.init(withDictionary: item as Dictionary))
             }
         }
         completion(.success(cats))

@@ -23,6 +23,8 @@
 		8475FE9A25C31E7A00DD2064 /* CatModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475FE9925C31E7A00DD2064 /* CatModelTest.swift */; };
 		8475FEA025C32C2500DD2064 /* NetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475FE9F25C32C2500DD2064 /* NetworkManagerTest.swift */; };
 		8475FEAF25C3353500DD2064 /* MockJson in Resources */ = {isa = PBXBuildFile; fileRef = 8475FEAE25C3353500DD2064 /* MockJson */; };
+		8475FEB325C3361A00DD2064 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475FEB225C3361A00DD2064 /* URLSessionMock.swift */; };
+		8475FEB925C3376900DD2064 /* URLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475FEB825C3376900DD2064 /* URLSessionDataTaskMock.swift */; };
 		84780B1C259A31DB00275002 /* RegistrationDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B1B259A31DB00275002 /* RegistrationDelegateProtocol.swift */; };
 		84780B1F259A33F300275002 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B1E259A33F300275002 /* RegistrationPresenter.swift */; };
 		84780B21259A39A500275002 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B20259A39A500275002 /* UserManager.swift */; };
@@ -78,6 +80,8 @@
 		8475FE9925C31E7A00DD2064 /* CatModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModelTest.swift; sourceTree = "<group>"; };
 		8475FE9F25C32C2500DD2064 /* NetworkManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTest.swift; sourceTree = "<group>"; };
 		8475FEAE25C3353500DD2064 /* MockJson */ = {isa = PBXFileReference; explicitFileType = text; path = MockJson; sourceTree = "<group>"; };
+		8475FEB225C3361A00DD2064 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
+		8475FEB825C3376900DD2064 /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		84780B1B259A31DB00275002 /* RegistrationDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDelegateProtocol.swift; sourceTree = "<group>"; };
 		84780B1E259A33F300275002 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		84780B20259A39A500275002 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				8475FEAE25C3353500DD2064 /* MockJson */,
+				8475FEB225C3361A00DD2064 /* URLSessionMock.swift */,
+				8475FEB825C3376900DD2064 /* URLSessionDataTaskMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -500,9 +506,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8475FEB325C3361A00DD2064 /* URLSessionMock.swift in Sources */,
 				8475FEA025C32C2500DD2064 /* NetworkManagerTest.swift in Sources */,
 				8475FE9A25C31E7A00DD2064 /* CatModelTest.swift in Sources */,
 				842C51E5254978A100886E42 /* CatAPITests.swift in Sources */,
+				8475FEB925C3376900DD2064 /* URLSessionDataTaskMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
