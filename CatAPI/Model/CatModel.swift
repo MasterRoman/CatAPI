@@ -13,7 +13,7 @@ class CatModel: NSObject {
     var imageId : String
     var url : String
     
-    init(withDictionary dictionary:NSDictionary) {
+    init(withDictionary dictionary:Dictionary<String, Any>) {
         self.imageId = dictionary["id"] as! String
         self.url = dictionary["url"] as! String
     }
