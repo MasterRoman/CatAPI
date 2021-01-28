@@ -15,11 +15,13 @@ class NetworkManagerTest: XCTestCase {
     
     private var parser : JSONParser?
     private var networkManager : NetworkManager?
+    private var mockSession : URLSessionMock?
 
 
     override func setUpWithError() throws {
         self.parser = JSONParser.init()
         self.networkManager = NetworkManager.init(withParser: self.parser!)
+        self.mockSession = URLSessionMock.init()
     }
 
     override func tearDownWithError() throws {
@@ -27,17 +29,36 @@ class NetworkManagerTest: XCTestCase {
         self.parser = nil
         
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+   
+    func testLoadingAndParsingCats() throws {
+        let filePath = Bundle(for: type(of: self)).path(forResource: "MockJson", ofType: nil)
+        let mockData = NSData.init(contentsOfFile: filePath!)
+        self.mockSession?.data = mockData as Data?
+        self.networkManager?.session = self.mockSession!
+        self.networkManager?.loadCats(url: filePath!, completion: {result in
+            switch result{
+            case .success(let array):
+                XCTAssertTrue(array.count == 2)
+            case .failure(_):
+                break
+            }
+        })
+        
+        ////////// WORK WITH fail handlers!!!!!
+        let url = "inccorrectURL"
+        self.networkManager?.loadCats(url: url, completion: { result in
+            switch result{
+            case .success(_):
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        })
+        
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+  
 
 }
