@@ -13,7 +13,7 @@ class NetworkManager: NSObject {
     
     private var chache : NSCache<NSString,UIImage>
     private let parser : JSONParser
-    private var session : URLSession
+    var session : URLSession
     private var operations : Dictionary<String,Array<DownloadImageOperation>>
     private var queue : OperationQueue
     
