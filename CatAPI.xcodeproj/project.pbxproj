@@ -20,6 +20,7 @@
 		842C51F725497A3F00886E42 /* AthenticationDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51F625497A3F00886E42 /* AthenticationDelegateProtocol.swift */; };
 		842C51FA25497A9700886E42 /* AthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C51F825497A9700886E42 /* AthenticationViewController.swift */; };
 		842C51FB25497A9700886E42 /* AthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842C51F925497A9700886E42 /* AthenticationViewController.xib */; };
+		8475FE9A25C31E7A00DD2064 /* CatModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475FE9925C31E7A00DD2064 /* CatModelTest.swift */; };
 		84780B1C259A31DB00275002 /* RegistrationDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B1B259A31DB00275002 /* RegistrationDelegateProtocol.swift */; };
 		84780B1F259A33F300275002 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B1E259A33F300275002 /* RegistrationPresenter.swift */; };
 		84780B21259A39A500275002 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84780B20259A39A500275002 /* UserManager.swift */; };
@@ -72,6 +73,7 @@
 		842C51F625497A3F00886E42 /* AthenticationDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenticationDelegateProtocol.swift; sourceTree = "<group>"; };
 		842C51F825497A9700886E42 /* AthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenticationViewController.swift; sourceTree = "<group>"; };
 		842C51F925497A9700886E42 /* AthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AthenticationViewController.xib; sourceTree = "<group>"; };
+		8475FE9925C31E7A00DD2064 /* CatModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModelTest.swift; sourceTree = "<group>"; };
 		84780B1B259A31DB00275002 /* RegistrationDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDelegateProtocol.swift; sourceTree = "<group>"; };
 		84780B1E259A33F300275002 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		84780B20259A39A500275002 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				842C51E4254978A100886E42 /* CatAPITests.swift */,
+				8475FE9925C31E7A00DD2064 /* CatModelTest.swift */,
 				842C51E6254978A100886E42 /* Info.plist */,
 			);
 			path = CatAPITests;
@@ -482,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8475FE9A25C31E7A00DD2064 /* CatModelTest.swift in Sources */,
 				842C51E5254978A100886E42 /* CatAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
