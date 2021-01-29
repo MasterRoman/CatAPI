@@ -59,6 +59,20 @@ class NetworkManagerTest: XCTestCase {
         
     }
 
+    func testLoadingImage() throws{
+        let localImage : UIImage = UIImage.init(named: "cat")!
+        let filePath : String = Bundle(for: type(of: self)).path(forResource: "cat.png", ofType: nil)!
+        
+        self.networkManager?.loadImageForUrl(url: filePath, completion: { (image) in
+            XCTAssertEqual(localImage, image)
+        })
+    }
+    
+    func testChaching() throws {
+        
+    }
+    
+    
   
 
 }
