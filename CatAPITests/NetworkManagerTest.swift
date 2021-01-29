@@ -45,14 +45,14 @@ class NetworkManagerTest: XCTestCase {
             }
         })
         
-        ////////// WORK WITH fail handlers!!!!!
+        self.mockSession?.data = Data.init()
         let url = "inccorrectURL"
         self.networkManager?.loadCats(url: url, completion: { result in
             switch result{
             case .success(_):
                 break
             case .failure(let error):
-                print(error.localizedDescription)
+                XCTAssertNotNil(error.self.localizedDescription)
             }
             
         })
