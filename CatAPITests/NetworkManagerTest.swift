@@ -69,7 +69,28 @@ class NetworkManagerTest: XCTestCase {
     }
     
     func testChaching() throws {
+        let localImage : UIImage = UIImage.init(named: "cat")!
+        let filePath : String = Bundle(for: type(of: self)).path(forResource: "cat.png", ofType: nil)!
+        self.networkManager?.getChachedImage(for: filePath, completion: { result in
+            switch result{
+            case .success(let image):
+                XCTAssertEqual(localImage, image)
+            case .failure(_):
+                break
+            }
+            
+        })
         
+        //for canceling 
+        self.networkManager?.getChachedImage(for: filePath, completion: { result in
+            switch result{
+            case .success(let image):
+                XCTAssertEqual(localImage, image)
+            case .failure(_):
+                break
+            }
+            
+        })
     }
     
     
