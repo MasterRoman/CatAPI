@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84113B9625C6B8EB00138E08 /* NetworkManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84113B9525C6B8EB00138E08 /* NetworkManagerMock.swift */; };
+		84113B9A25C6F55600138E08 /* MockJsonForDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 84113B9925C6F55600138E08 /* MockJsonForDictionary */; };
 		8417F4E625B9D8CD0054DDF4 /* ProfileDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F4E525B9D8CD0054DDF4 /* ProfileDelegateProtocol.swift */; };
 		8417F4EB25B9D90A0054DDF4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F4EA25B9D90A0054DDF4 /* ProfilePresenter.swift */; };
 		8417F4F425B9DB450054DDF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417F4F225B9DB450054DDF4 /* ProfileViewController.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84113B9525C6B8EB00138E08 /* NetworkManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerMock.swift; sourceTree = "<group>"; };
+		84113B9925C6F55600138E08 /* MockJsonForDictionary */ = {isa = PBXFileReference; explicitFileType = text; path = MockJsonForDictionary; sourceTree = "<group>"; };
 		8417F4E525B9D8CD0054DDF4 /* ProfileDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDelegateProtocol.swift; sourceTree = "<group>"; };
 		8417F4EA25B9D90A0054DDF4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		8417F4F225B9DB450054DDF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -267,8 +271,10 @@
 				84F6748725C489E90068B6A2 /* animal-footprint.png */,
 				84F6747D25C47B390068B6A2 /* cat.png */,
 				8475FEAE25C3353500DD2064 /* MockJson */,
+				84113B9925C6F55600138E08 /* MockJsonForDictionary */,
 				8475FEB225C3361A00DD2064 /* URLSessionMock.swift */,
 				8475FEB825C3376900DD2064 /* URLSessionDataTaskMock.swift */,
+				84113B9525C6B8EB00138E08 /* NetworkManagerMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 			files = (
 				84F6748825C489EA0068B6A2 /* animal-footprint.png in Resources */,
 				84F6747E25C47B390068B6A2 /* cat.png in Resources */,
+				84113B9A25C6F55600138E08 /* MockJsonForDictionary in Resources */,
 				8475FEAF25C3353500DD2064 /* MockJson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +523,7 @@
 			files = (
 				8475FEB325C3361A00DD2064 /* URLSessionMock.swift in Sources */,
 				8475FEA025C32C2500DD2064 /* NetworkManagerTest.swift in Sources */,
+				84113B9625C6B8EB00138E08 /* NetworkManagerMock.swift in Sources */,
 				8475FE9A25C31E7A00DD2064 /* CatModelTest.swift in Sources */,
 				842C51E5254978A100886E42 /* CatAPITests.swift in Sources */,
 				8475FEB925C3376900DD2064 /* URLSessionDataTaskMock.swift in Sources */,
