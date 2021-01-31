@@ -178,6 +178,7 @@ class NetworkManager: NSObject {
                 return
             }
             
+            completion(.success("Deleted"))
         })
         
         dataTask.resume()
