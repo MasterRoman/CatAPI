@@ -10,7 +10,7 @@ import UIKit
 
 class UploadPresenter: NSObject,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    private var uploadDelegate : UploadViewDelegateProtocol?
+    weak private var uploadDelegate : UploadViewDelegateProtocol?
     
     private var networkManeger : NetworkManager?
     

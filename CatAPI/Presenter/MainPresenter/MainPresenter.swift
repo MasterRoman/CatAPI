@@ -10,8 +10,8 @@ import UIKit
 
 class MainPresenter: NSObject {
     
-    private var catDelegate : CatViewDelegateProtocol?
-    private var detailDelegate : DetailViewDelegateProtocol?
+    weak private var catDelegate : CatViewDelegateProtocol?
+    weak private var detailDelegate : DetailViewDelegateProtocol?
     private var networkManeger : NetworkManager?
     private var parser : JSONParser?
     private var catsArray : Array<CatModel>?

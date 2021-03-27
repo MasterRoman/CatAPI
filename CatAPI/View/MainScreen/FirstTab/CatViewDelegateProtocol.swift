@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol CatViewDelegateProtocol {
+protocol CatViewDelegateProtocol : class{
     
     
     var collectionView : UICollectionView! { get set}

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol DetailViewDelegateProtocol {
+protocol DetailViewDelegateProtocol : class {
     
     var imageView : UIImageView? { get set }
     var saveButton : UIButton? {get set}

@@ -9,7 +9,7 @@
 import Foundation
 
 class APIPresenter: NSObject {
-    private var apiDelegate : APIDelegateProtocol?
+    weak private var apiDelegate : APIDelegateProtocol?
     private var userManeger : UserManager!
    
     override init() {

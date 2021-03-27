@@ -10,7 +10,7 @@ import UIKit
 
 class ProfilePresenter: NSObject {
     
-    private var profileDelegate : ProfileViewDelegateProtocol?
+    weak private var profileDelegate : ProfileViewDelegateProtocol?
     
     private var userManeger : UserManager?
     

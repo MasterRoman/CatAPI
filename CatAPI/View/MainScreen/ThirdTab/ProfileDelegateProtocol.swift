@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ProfileViewDelegateProtocol {
+protocol ProfileViewDelegateProtocol : class {
     
     func showAlertController()
     func changeProfileValues()

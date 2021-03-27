@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol APIDelegateProtocol {
+protocol APIDelegateProtocol : class {
     func pushMainVC()
     func showAPIWebPage()
 }

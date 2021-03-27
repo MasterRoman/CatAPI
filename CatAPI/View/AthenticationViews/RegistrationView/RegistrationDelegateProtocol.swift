@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol RegistrationDelegateProtocol  {
+protocol RegistrationDelegateProtocol : class  {
     func showAlertOfExisting()
     func showApiEnteranceVC()
     func closeVC()

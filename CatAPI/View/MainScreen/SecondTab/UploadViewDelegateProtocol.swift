@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UploadViewDelegateProtocol {
+protocol UploadViewDelegateProtocol : class {
     
     func showCats(array : Array<CatModel>)
     func addMoreImages(array : Array<CatModel>)

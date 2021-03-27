@@ -9,7 +9,7 @@
 import UIKit
 
 class AthenticationPresenter: NSObject {
-    var athenticationalDelegate : AthenticationDelegateProtocol?
+    weak var athenticationalDelegate : AthenticationDelegateProtocol?
     private var userManager : UserManager!
     override init() {
         self.userManager = UserManager.init()

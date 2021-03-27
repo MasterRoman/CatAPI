@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol AthenticationDelegateProtocol {
+protocol AthenticationDelegateProtocol : class {
     func showUnregisterMainController()
     func pushRegistrationVC()
     func pushRegisteredUser()
